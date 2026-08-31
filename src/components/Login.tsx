@@ -1,8 +1,8 @@
 /** Pantalla de acceso. Es lo unico que se ve sin sesion.
  *
- *  No hay registro a proposito: la cuenta se crea a mano en el panel de
- *  Supabase y el servidor ademas exige que el id coincida con ALLOWED_USER_ID.
- *  Una app con sueldos y reportes de salud no lleva alta publica. */
+ *  No hay formulario de registro a proposito: las cuentas se crean a mano en el
+ *  panel de Supabase. Ojo que eso solo alcanza si el registro publico esta
+ *  apagado alla; si no, cualquiera se da de alta por su cuenta y entra. */
 
 import { useState, type FormEvent } from 'react';
 import { isSupabaseConfigured, supabase } from '../lib/supabase.ts';

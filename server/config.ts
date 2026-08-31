@@ -68,8 +68,6 @@ export interface AppConfig {
   readonly appRoot: string;
   readonly supabaseUrl: string;
   readonly supabaseServiceKey: string;
-  /** Unico usuario habilitado. Vacio = nadie entra: se falla cerrado. */
-  readonly allowedUserId: string;
   readonly anthropicApiKey: string;
   readonly anthropicModel: string;
   /** Nombre del cliente tal como aparece en el location del turno en Deputy. */
@@ -106,7 +104,6 @@ function build(): AppConfig {
     appRoot: APP_ROOT,
     supabaseUrl: stripTrailingSlash(process.env.SUPABASE_URL?.trim() ?? ''),
     supabaseServiceKey: process.env.SUPABASE_SERVICE_ROLE_KEY?.trim() ?? '',
-    allowedUserId: process.env.ALLOWED_USER_ID?.trim() ?? '',
     anthropicApiKey: process.env.ANTHROPIC_API_KEY?.trim() ?? '',
     anthropicModel: process.env.ANTHROPIC_MODEL?.trim() || DEFAULT_MODEL,
     reportsClientName: process.env.REPORTS_CLIENT_NAME?.trim() || DEFAULT_CLIENT_NAME,
