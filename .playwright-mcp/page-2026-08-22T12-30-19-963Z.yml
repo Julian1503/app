@@ -1,0 +1,9 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Internal tool · condition 8105
+      - heading "Hours and pay" [level=1] [ref=e7]
+    - group "Language" [ref=e9]:
+      - button "Español" [ref=e10] [cursor=pointer]
+      - button "English" [pressed] [ref=e11] [cursor=pointer]
+  - generic [ref=e12]: Loading…

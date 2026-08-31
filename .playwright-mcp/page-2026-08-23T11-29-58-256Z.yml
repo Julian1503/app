@@ -1,0 +1,84 @@
+- main [ref=f10e12]:
+  - 'generic "Behaviour Recording and Monitoring form for Joshua Jones This form is used to collect data and information that supports the development of a positive behaviour support plan with associated support strategies for Joshua. The information collected in this form is provided directly to the Behaviour Support Practitioner of Darling Downs Therapy Services. Please provide detailed, unbiased and accurate information when completing this form. Please note: this behaviour recording sheet is submitted to the Behaviour Support Practitioner at Darling Downs Therapy Services to monitor behaviours over time to inform strategies in the positive behaviour support plan. Please also complete all necessary reporting and documentation as required by your employer in relation to Joshua''s support (e.g. progress notes, incident reports etc.)" [ref=f10e14]':
+    - heading "Behaviour Recording and Monitoring form for Joshua Jones" [level=1] [ref=f10e18]
+    - generic [ref=f10e20]:
+      - text: This form is used to collect data and information that supports the development of a positive behaviour support plan with associated support strategies for Joshua. The information collected in this form is provided directly to the Behaviour Support Practitioner of Darling Downs Therapy Services. Please provide detailed, unbiased and accurate information when completing this form.
+      - generic [ref=f10e21]: "Please note: this behaviour recording sheet is submitted to the Behaviour Support Practitioner at Darling Downs Therapy Services to monitor behaviours over time to inform strategies in the positive behaviour support plan. Please also complete all necessary reporting and documentation as required by your employer in relation to Joshua's support (e.g. progress notes, incident reports etc.)"
+  - generic [ref=f10e22]:
+    - generic [ref=f10e23]:
+      - generic [ref=f10e24]: When you submit this form, it will not automatically collect your details like name and email address unless you provide it yourself.
+      - generic [ref=f10e25]:
+        - generic [ref=f10e26]: "*"
+        - text: Required
+    - generic [ref=f10e27]:
+      - generic [ref=f10e28]:
+        - generic [ref=f10e31]:
+          - heading "1. Name of person completing this form.Required to answer" [level=2] [ref=f10e32]:
+            - generic [ref=f10e33]: "1."
+            - text: Name of person completing this form.
+            - note "Required to answer" [ref=f10e34]: "*"
+          - log [ref=f10e35]
+        - textbox "1. Name of person completing this form.Required to answer" [ref=f10e39]:
+          - /placeholder: Enter your answer
+      - generic [ref=f10e40]:
+        - generic [ref=f10e43]:
+          - heading "2. Date.Required to answer" [level=2] [ref=f10e44]:
+            - generic [ref=f10e45]: "2."
+            - text: Date.
+            - note "Required to answer" [ref=f10e46]: "*"
+          - log [ref=f10e47]
+        - generic [ref=f10e49]:
+          - textbox "2. Date.Required to answer" [ref=f10e51]:
+            - /placeholder: Please input date (M/d/yyyy)
+          - button "Date picker" [ref=f10e52]
+      - generic [ref=f10e56]:
+        - generic [ref=f10e59]:
+          - heading "3. What time did you work with Joshua? Please note, this is a period of time that you worked with Joshua, and is not an exact representation of your shift time. Required to answer" [level=2] [ref=f10e60]:
+            - generic [ref=f10e61]: "3."
+            - generic [ref=f10e62]: What time did you work with Joshua? Please note, this is a period of time that you worked with Joshua, and is not an exact representation of your shift time.
+            - note "Required to answer" [ref=f10e63]: "*"
+          - log [ref=f10e64]
+        - radiogroup "3. What time did you work with Joshua? Please note, this is a period of time that you worked with Joshua, and is not an exact representation of your shift time. Required to answer" [ref=f10e66]:
+          - generic [ref=f10e67]:
+            - generic [ref=f10e70]:
+              - radio "6.00am to 9.00am" [ref=f10e72] [cursor=pointer]
+              - generic "6.00am to 9.00am" [ref=f10e76]
+            - generic [ref=f10e79]:
+              - radio "9.00am to 12.00pm" [ref=f10e81] [cursor=pointer]
+              - generic "9.00am to 12.00pm" [ref=f10e85]
+            - generic [ref=f10e88]:
+              - radio "12.00pm to 3.00pm" [ref=f10e90] [cursor=pointer]
+              - generic "12.00pm to 3.00pm" [ref=f10e94]
+            - generic [ref=f10e97]:
+              - radio "3.00pm to 6.00pm" [ref=f10e99] [cursor=pointer]
+              - generic "3.00pm to 6.00pm" [ref=f10e103]
+            - generic [ref=f10e106]:
+              - radio "6.00pm to 10.00pm" [checked] [ref=f10e108] [cursor=pointer]
+              - generic "6.00pm to 10.00pm" [ref=f10e112]
+      - generic [ref=f10e113]:
+        - generic [ref=f10e116]:
+          - heading "4. Did you support Joshua at home or in the community during your shift?Required to answer" [level=2] [ref=f10e117]:
+            - generic [ref=f10e118]: "4."
+            - text: Did you support Joshua at home or in the community during your shift?
+            - note "Required to answer" [ref=f10e119]: "*"
+          - log [ref=f10e120]
+        - radiogroup "4. Did you support Joshua at home or in the community during your shift?Required to answer" [ref=f10e122]:
+          - generic [ref=f10e123]:
+            - generic [ref=f10e126]:
+              - radio "At home" [checked] [ref=f10e128] [cursor=pointer]
+              - generic "At home" [ref=f10e132]
+            - generic [ref=f10e135]:
+              - radio "In the community" [ref=f10e137] [cursor=pointer]
+              - generic "In the community" [ref=f10e141]
+            - generic [ref=f10e144]:
+              - radio "Both at home and in the community" [ref=f10e146] [cursor=pointer]
+              - generic "Both at home and in the community" [ref=f10e150]
+      - generic [ref=f10e151]:
+        - generic [ref=f10e154]:
+          - heading "5. What activities did Joshua engage in today during your shift? Required to answer" [level=2] [ref=f10e155]:
+            - generic [ref=f10e156]: "5."
+            - text: What activities did Joshua engage in today during your shift?
+            - note "Required to answer" [ref=f10e157]: "*"
+          - log [ref=f10e158]
+        - textbox "5. What activities did Joshua engage in today during your shift? Required to answer" [ref=f10e162]:
+          - /placeholder: Enter your answer

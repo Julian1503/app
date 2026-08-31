@@ -1,0 +1,67 @@
+/* Direccion visual: panel de instrumentos editorial. Base papel cálido, tinta
+   casi negra, un solo acento frío y color estrictamente semántico para el
+   estado de cada quincena. Nada de gris sobre blanco con un azul decorativo. */
+
+:root {
+  /* Superficies */
+  --paper: oklch(97.5% 0.008 85);
+  --paper-sunk: oklch(95% 0.01 85);
+  --surface: oklch(99.5% 0.004 85);
+  --surface-raised: oklch(100% 0 0);
+  --rule: oklch(88% 0.012 85);
+  --rule-strong: oklch(78% 0.015 85);
+
+  /* Tinta */
+  --ink: oklch(22% 0.015 60);
+  --ink-soft: oklch(45% 0.012 60);
+  --ink-faint: oklch(62% 0.01 60);
+
+  /* Acento */
+  --accent: oklch(48% 0.11 215);
+  --accent-soft: oklch(94% 0.03 215);
+
+  /* Semántica de estado */
+  --ok: oklch(52% 0.13 155);
+  --ok-soft: oklch(94% 0.04 155);
+  --warn: oklch(64% 0.14 75);
+  --warn-soft: oklch(95% 0.05 75);
+  --over: oklch(52% 0.19 25);
+  --over-soft: oklch(95% 0.04 25);
+
+  /* Tipografía */
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-text: 'Inter', 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Cascadia Mono', 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+
+  --text-micro: 0.6875rem;
+  --text-small: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lead: 1.0625rem;
+  --text-title: clamp(1.375rem, 1.1rem + 1.1vw, 1.875rem);
+  --text-figure: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+
+  /* Ritmo */
+  --gap-tight: 0.5rem;
+  --gap: 1rem;
+  --gap-wide: 1.75rem;
+  --gap-section: clamp(2.25rem, 1.5rem + 2.5vw, 3.75rem);
+
+  --radius-sharp: 3px;
+  --radius: 8px;
+  --radius-round: 999px;
+
+  --shadow-card: 0 1px 2px oklch(22% 0.015 60 / 0.05), 0 8px 24px -12px oklch(22% 0.015 60 / 0.18);
+  --shadow-lift: 0 2px 4px oklch(22% 0.015 60 / 0.07), 0 16px 32px -14px oklch(22% 0.015 60 / 0.25);
+
+  --duration: 180ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

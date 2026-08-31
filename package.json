@@ -1,0 +1,41 @@
+{
+  "name": "horas",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Herramienta interna: control de horas contra la condicion 8105 y auditoria de payslips",
+  "scripts": {
+    "dev": "concurrently -n server,web -c cyan,magenta \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "tsx watch server/index.ts",
+    "dev:web": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test --import tsx tests/*.test.ts",
+    "payslips:check": "tsx scripts/check-payslips.ts",
+    "forecast:check": "tsx scripts/check-forecast.ts",
+    "db:migrate": "tsx scripts/migrate-to-supabase.ts",
+    "payslips:import": "tsx scripts/import-payslips.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
+    "@supabase/supabase-js": "^2.112.4",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  }
+}

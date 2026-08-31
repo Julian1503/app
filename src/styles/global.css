@@ -1,0 +1,1547 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* --- Estructura --- */
+
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 0.8rem + 2vw, 3rem) clamp(1rem, 0.5rem + 2vw, 2.5rem) 5rem;
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap);
+  padding-bottom: var(--gap);
+  border-bottom: 2px solid var(--ink);
+}
+
+.masthead h1 {
+  font-size: var(--text-title);
+}
+
+.masthead__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.section {
+  margin-top: var(--gap-section);
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-tight);
+  margin-bottom: var(--gap);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.section__head h2 {
+  font-size: var(--text-lead);
+}
+
+.section__note {
+  font-size: var(--text-small);
+  color: var(--ink-faint);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+/* --- Selector de idioma --- */
+
+.langswitch {
+  display: inline-flex;
+  padding: 2px;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-round);
+}
+
+.langswitch__option {
+  padding: 0.25rem 0.7rem;
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  background: none;
+  border: none;
+  border-radius: var(--radius-round);
+  transition:
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.langswitch__option:hover:not(.is-active) {
+  color: var(--ink);
+}
+
+.langswitch__option.is-active {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.langswitch__option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* --- Botones --- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-sharp);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--text-small);
+  font-weight: 550;
+  text-decoration: none;
+  transition:
+    transform var(--duration) var(--ease),
+    box-shadow var(--duration) var(--ease),
+    background var(--duration) var(--ease);
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule-strong);
+}
+
+.button--ghost:hover:not(:disabled) {
+  border-color: var(--ink);
+  background: var(--surface-raised);
+}
+
+/* --- Gauge de la quincena vigente --- */
+
+.gauge {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  gap: var(--gap-wide);
+  align-items: center;
+  padding: var(--gap-wide);
+}
+
+.gauge__dial {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.gauge__readout {
+  position: absolute;
+  text-align: center;
+  line-height: 1;
+}
+
+.gauge__figure {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-figure);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.gauge__unit {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: var(--text-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.gauge__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-bottom: 0.35rem;
+}
+
+.gauge__steps {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.stepper {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  transition:
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease);
+}
+
+.stepper:hover:not(:disabled) {
+  color: var(--ink);
+  background: var(--accent-soft);
+}
+
+.stepper:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.gauge__body h3 {
+  font-size: var(--text-lead);
+  margin-bottom: 0.35rem;
+}
+
+.gauge__range {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.linkish {
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--accent);
+  background: none;
+  border: none;
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+}
+
+.linkish:hover {
+  color: var(--ink);
+}
+
+.gauge__verdict {
+  margin: var(--gap) 0 0;
+  padding: 0.75rem 0.95rem;
+  border-left: 3px solid currentColor;
+  border-radius: 0 var(--radius-sharp) var(--radius-sharp) 0;
+  font-size: var(--text-small);
+}
+
+.gauge__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-wide);
+  margin-top: var(--gap);
+  padding-top: var(--gap);
+  border-top: 1px solid var(--rule);
+}
+
+.stat__label {
+  display: block;
+  font-size: var(--text-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.stat__value {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Recibo del proximo pago --- */
+
+.cheque {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: var(--gap-wide);
+  padding: var(--gap-wide);
+}
+
+.cheque__figure {
+  padding-right: var(--gap-wide);
+  border-right: 1px solid var(--rule);
+}
+
+.cheque__amount {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-figure);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cheque__unit {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: var(--text-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.cheque__bar {
+  display: flex;
+  height: 12px;
+  margin-top: var(--gap);
+  background: var(--paper-sunk);
+  border-radius: var(--radius-round);
+  overflow: hidden;
+}
+
+.cheque__bar-net {
+  background: var(--ok);
+  transition: width var(--duration) var(--ease);
+}
+
+.cheque__bar-tax {
+  background: var(--warn);
+  transition: width var(--duration) var(--ease);
+}
+
+.cheque__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  margin: 0.55rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--ink-soft);
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.3rem;
+  border-radius: 2px;
+}
+
+.swatch--net {
+  background: var(--ok);
+}
+
+.swatch--tax {
+  background: var(--warn);
+}
+
+.cheque__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-tight);
+}
+
+.cheque__head h3 {
+  font-size: var(--text-lead);
+}
+
+.cheque__range {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.cheque__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-wide);
+  margin-top: var(--gap);
+  padding-top: var(--gap);
+  border-top: 1px solid var(--rule);
+}
+
+.cheque__caption {
+  margin: var(--gap) 0 0.35rem;
+  font-size: var(--text-micro);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.cheque__lines {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-small);
+}
+
+.cheque__lines li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 5.5rem;
+  gap: var(--gap);
+  padding: 0.3rem 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.cheque__lines li:last-child {
+  border-bottom: none;
+}
+
+/* Los viaticos no son ganancia: se los aparta visualmente del resto. */
+.cheque__lines li.is-aside {
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.cheque__line-qty,
+.cheque__line-amount {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+}
+
+.cheque__line-amount {
+  text-align: right;
+  color: var(--ink);
+}
+
+.cheque__note {
+  margin: var(--gap) 0 0;
+  padding: 0.7rem 0.9rem;
+  background: var(--paper-sunk);
+  border-radius: var(--radius-sharp);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+/* La fila de la semana elegida y las que todavia no se pagaron. */
+.table tbody tr.is-selected {
+  background: var(--accent-soft);
+}
+
+.table tbody tr.is-future td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.is-faint {
+  color: var(--ink-faint);
+}
+
+/* --- Estados --- */
+
+.is-ok {
+  color: var(--ok);
+}
+.is-warning {
+  color: var(--warn);
+}
+.is-over {
+  color: var(--over);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-round);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Celda que puede llevar mas de un chip: el estado y, si lo hubo, el back pay. */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip--ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.chip--warning {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+.chip--over {
+  background: var(--over-soft);
+  color: var(--over);
+}
+.chip--info {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* --- Barras de quincenas --- */
+
+.ladder {
+  display: flex;
+  flex-direction: column;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: minmax(150px, auto) minmax(0, 1fr) 4.5rem;
+  align-items: center;
+  gap: var(--gap);
+  width: 100%;
+  padding: 0.55rem var(--gap);
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background var(--duration) var(--ease);
+}
+
+.rung:last-child {
+  border-bottom: none;
+}
+
+.rung:hover {
+  background: var(--paper-sunk);
+}
+
+.rung--future {
+  background: linear-gradient(90deg, var(--accent-soft) 0 3px, transparent 3px);
+}
+
+.rung--selected,
+.rung--selected:hover {
+  background: linear-gradient(90deg, var(--accent) 0 3px, var(--paper-sunk) 3px);
+}
+
+.rung--selected .rung__range {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.rung__range {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.rung__track {
+  position: relative;
+  height: 20px;
+  background: var(--paper-sunk);
+  border-radius: var(--radius-sharp);
+  overflow: hidden;
+}
+
+.rung__fill {
+  height: 100%;
+  border-radius: var(--radius-sharp) 0 0 var(--radius-sharp);
+  transition: width var(--duration) var(--ease);
+}
+
+.rung__limit {
+  position: absolute;
+  inset-block: -2px;
+  width: 2px;
+  background: var(--ink);
+}
+
+.rung__value {
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* --- Hallazgos --- */
+
+.findings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.finding {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--rule-strong);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.finding--critical {
+  border-left-color: var(--over);
+}
+.finding--high {
+  border-left-color: var(--warn);
+}
+.finding--medium {
+  border-left-color: var(--accent);
+}
+.finding--info {
+  border-left-color: var(--rule-strong);
+}
+
+.finding__title {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-text);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.finding__detail {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.finding__amount {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  background: var(--ok-soft);
+  color: var(--ok);
+  border-radius: var(--radius-sharp);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+
+/* --- Tablas --- */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+
+.table th {
+  padding: 0.5rem var(--gap-tight);
+  border-bottom: 1px solid var(--rule-strong);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  text-align: left;
+}
+
+.table td {
+  padding: 0.5rem var(--gap-tight);
+  border-bottom: 1px solid var(--rule);
+}
+
+.table tbody tr:hover {
+  background: var(--paper-sunk);
+}
+
+.table .num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.scroll-x {
+  overflow-x: auto;
+  padding: var(--gap-tight) var(--gap) var(--gap);
+}
+
+/* --- Plan de recorte --- */
+
+.drop {
+  display: grid;
+  gap: var(--gap);
+  padding: var(--gap-wide);
+}
+
+.drop__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.drop__item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-tight);
+  padding: 0.55rem 0.75rem;
+  background: var(--paper-sunk);
+  border-radius: var(--radius-sharp);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+}
+
+.drop__freed {
+  font-weight: 600;
+  color: var(--ok);
+}
+
+.draft {
+  width: 100%;
+  min-height: 190px;
+  padding: var(--gap);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sharp);
+  background: var(--surface-raised);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.draft:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Resumen del reclamo, arriba de la tabla semanal. */
+.backpay {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-bottom: var(--gap);
+  padding: var(--gap) var(--gap-wide);
+  border-left: 3px solid var(--ok);
+}
+
+.backpay h3 {
+  margin: 0.1rem 0 0.25rem;
+}
+
+.backpay .section__note {
+  margin: 0;
+}
+
+/* --- Estados de la app --- */
+
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin-top: var(--gap);
+  padding: var(--gap) var(--gap-wide);
+  border-radius: var(--radius);
+}
+
+.notice--info {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.notice--error {
+  background: var(--over-soft);
+  color: var(--over);
+}
+
+.notice p {
+  margin: 0;
+  font-size: var(--text-small);
+}
+
+.empty {
+  padding: var(--gap-wide);
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: var(--text-small);
+}
+
+@media (max-width: 720px) {
+  .gauge,
+  .rung,
+  .finding,
+  .cheque {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rung__value {
+    text-align: left;
+  }
+
+  .cheque__figure {
+    padding-right: 0;
+    padding-bottom: var(--gap);
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+  }
+}
+
+/* --- Reportes de turno ---------------------------------------------------
+   Cada turno es una ficha de trabajo: cabecera con fecha y horario, el
+   comentario de Deputy como cita, y debajo el formulario. El estado se lee de
+   un vistazo por el filete de color a la izquierda, no por un badge perdido. */
+
+.reports {
+  display: grid;
+  gap: var(--gap-wide);
+}
+
+.report {
+  display: grid;
+  gap: var(--gap);
+  border-left: 3px solid var(--rule-strong);
+}
+
+.report--drafted {
+  border-left-color: var(--accent);
+}
+
+.report--submitted {
+  border-left-color: var(--ok);
+  background: linear-gradient(to right, var(--ok-soft), var(--surface) 40%);
+}
+
+.report__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap);
+  flex-wrap: wrap;
+}
+
+.report__head h3 {
+  font-family: var(--font-mono);
+  font-size: var(--text-lead);
+  font-weight: 500;
+  margin: 0;
+}
+
+.report__area {
+  font-family: var(--font-text);
+  color: var(--ink-faint);
+  font-size: var(--text-small);
+}
+
+.pill {
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-round);
+  background: var(--paper-sunk);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.pill--drafted {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.pill--submitted {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+
+/* El comentario del timesheet es la referencia contra la que se contrasta el
+   reporte, asi que se cita en vez de mostrarse como un campo mas. */
+.report__deputy {
+  margin: 0;
+  padding-left: var(--gap);
+  border-left: 2px solid var(--rule);
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.report__deputyLabel {
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  font-size: var(--text-micro);
+  letter-spacing: 0.06em;
+}
+
+.report__behaviours {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: var(--gap);
+  margin: 0;
+  display: grid;
+  gap: var(--gap-tight);
+}
+
+.report__behaviours legend {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  padding: 0 0.4rem;
+}
+
+.behaviour {
+  display: grid;
+  gap: var(--gap-tight);
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--paper-sunk);
+}
+
+.behaviour:last-child {
+  border-bottom: none;
+}
+
+.behaviour__tick {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: var(--text-small);
+}
+
+.behaviour__tick input {
+  accent-color: var(--accent);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.behaviour__detail {
+  display: grid;
+  gap: 0.35rem;
+  padding-left: 1.6rem;
+}
+
+.behaviour__row {
+  display: flex;
+  gap: var(--gap-tight);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.behaviour__count {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.behaviour__count input {
+  width: 5rem;
+  font-family: var(--font-mono);
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sharp);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.behaviour__note {
+  flex: 1 1 16rem;
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sharp);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--text-small);
+}
+
+.behaviour__hint {
+  margin: 0;
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+}
+
+.behaviour__count input:focus-visible,
+.behaviour__note:focus-visible,
+.report__field textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.report__field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.report__field > span {
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.report__field textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sharp);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+
+.report__actions {
+  display: flex;
+  gap: var(--gap-tight);
+  flex-wrap: wrap;
+}
+
+.report__error {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--over);
+}
+
+.report__hint {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--ink-faint);
+}
+
+.report__draft {
+  display: grid;
+  gap: var(--gap-tight);
+  padding-top: var(--gap);
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 640px) {
+  .report__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .behaviour__detail {
+    padding-left: 0;
+  }
+}
+
+/* --- Chips y sugerencias -------------------------------------------------
+   El pick es la unidad de entrada rapida: un turno tranquilo se completa
+   tocando cuatro y sin escribir nada. El borde punteado marca lo que propuso
+   la lectura del comentario de Deputy y todavia no revisaste. */
+
+.picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pick {
+  font: inherit;
+  font-size: var(--text-small);
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-round);
+  background: var(--surface);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition:
+    background var(--duration) var(--ease),
+    color var(--duration) var(--ease),
+    border-color var(--duration) var(--ease);
+}
+
+.pick:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.pick:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.pick--on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface-raised);
+}
+
+.pick--on:hover {
+  color: var(--surface-raised);
+  filter: brightness(1.1);
+}
+
+.pick--suggested {
+  border-style: dashed;
+}
+
+.taggroup {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: var(--gap-tight);
+  align-items: start;
+  padding: 0.3rem 0;
+}
+
+.taggroup__label {
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  padding-top: 0.3rem;
+}
+
+.report__headActions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-tight);
+}
+
+.report__suggestNote {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-sharp);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: var(--text-small);
+}
+
+.behaviour--suggested {
+  border-left: 2px dashed var(--accent);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+/* La conducta vive en un renglon: tilde, conteo y el enlace al detalle. La nota
+   solo aparece si la pedis, para que la lista se lea de un vistazo. */
+.behaviour__line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-tight);
+  flex-wrap: wrap;
+}
+
+.behaviour__quick {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-tight);
+}
+
+.report__extra {
+  border-top: 1px solid var(--rule);
+  padding-top: var(--gap-tight);
+}
+
+.report__extra summary {
+  cursor: pointer;
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.report__extra summary:hover {
+  color: var(--accent);
+}
+
+.report__extra .report__field {
+  margin-top: var(--gap-tight);
+}
+
+@media (max-width: 640px) {
+  .taggroup {
+    grid-template-columns: 1fr;
+  }
+
+  .behaviour__line {
+    align-items: flex-start;
+  }
+}
+
+/* --- Revision del formulario ---------------------------------------------
+   Tres bloques con peso visual distinto: lo documentado se lee de corrido, lo
+   que falta confirmar interrumpe, y lo que no se puede saber queda atenuado
+   pero presente. La procedencia de cada respuesta tiene que verse sin leer. */
+
+.review {
+  display: grid;
+  gap: var(--gap);
+  padding: var(--gap);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper-sunk);
+}
+
+.review__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--gap-tight);
+  flex-wrap: wrap;
+}
+
+.review__head h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lead);
+}
+
+.review__count {
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+
+.review__block {
+  display: grid;
+  gap: var(--gap-tight);
+}
+
+.review__label {
+  margin: 0;
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+}
+
+.review__label--ok {
+  color: var(--ok);
+}
+
+.review__label--warn {
+  color: var(--warn);
+}
+
+.review__block--gaps {
+  padding: var(--gap);
+  border: 1px dashed var(--warn);
+  border-radius: var(--radius-sharp);
+  background: var(--warn-soft);
+}
+
+.frows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.3rem;
+}
+
+/* Numero de pregunta a la izquierda en ancho fijo: la columna deja leer el
+   formulario como formulario y no como una lista de frases. */
+.frow {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: var(--gap-tight);
+  align-items: baseline;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: var(--text-small);
+}
+
+.frow:last-child {
+  border-bottom: none;
+}
+
+.frow__q {
+  color: var(--ink-soft);
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.frow__v {
+  color: var(--ink);
+}
+
+/* La cita de la nota va debajo del valor, en la misma columna. */
+.frow__ev {
+  grid-column: 2;
+  color: var(--ink-faint);
+  font-size: var(--text-micro);
+  font-style: italic;
+}
+
+.frow--out .frow__v {
+  color: var(--ink-faint);
+}
+
+.gaps {
+  display: grid;
+  gap: var(--gap);
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.gap {
+  display: list-item;
+}
+
+.gap::marker {
+  color: var(--ink-faint);
+  font-size: var(--text-small);
+}
+
+.gap > * + * {
+  margin-top: 0.35rem;
+}
+
+.gap__q {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--ink);
+}
+
+.gap__field {
+  display: block;
+  font-size: var(--text-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+
+/* Las salidas de "no se puede saber" van separadas de las respuestas reales:
+   disponibles, no sugeridas. */
+.picks--out {
+  padding-top: 0.15rem;
+  border-top: 1px dotted var(--rule-strong);
+}
+
+.pick--unsure {
+  border-style: dashed;
+  color: var(--ink-faint);
+  font-size: var(--text-micro);
+}
+
+.pick--unsure.pick--on {
+  background: var(--ink-faint);
+  border-color: var(--ink-faint);
+  color: var(--surface-raised);
+}
+
+.review__foot {
+  margin: 0;
+  font-size: var(--text-micro);
+  color: var(--ink-soft);
+}
+
+/* Referencia de en que pregunta cae cada conducta, en la carga manual. */
+.behaviour__where {
+  margin-left: auto;
+  font-size: var(--text-micro);
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.draft--form {
+  min-height: 22rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+}
+
+@media (max-width: 640px) {
+  .frow {
+    grid-template-columns: 1fr;
+  }
+
+  .frow__ev {
+    grid-column: 1;
+  }
+}
+
+.section__note--warn {
+  color: var(--warn);
+}
+
+/* Una respuesta ya dada sigue siendo editable: sus controles ocupan la columna
+   del valor, en vez de convertirse en texto plano. */
+.frow__edit {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.frow__edit .picks--out {
+  border-top: none;
+  padding-top: 0;
+}
+
+.frow__edit .pick {
+  font-size: var(--text-micro);
+  padding: 0.15rem 0.55rem;
+}
+
+/* Los tres pasos para pasar del programa al formulario. Van numerados y en
+   orden porque el flujo cruza dos pestañas y es facil perderse. */
+.steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.2rem;
+  font-size: var(--text-small);
+  color: var(--ink-soft);
+}
+
+.steps::marker,
+.steps li::marker {
+  color: var(--ink-faint);
+}
+
+/* Un enlace que hace de boton necesita la altura de linea de uno. */
+a.button {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* --- Pestañas de reportes -------------------------------------------------
+   Pendientes y archivados. La pestaña activa se marca con la línea inferior,
+   no con relleno: el peso visual tiene que quedar en las tarjetas. */
+
+.tabs {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gap);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--gap);
+}
+
+.tabs__list {
+  display: flex;
+  gap: var(--gap-tight);
+}
+
+.tab {
+  font: inherit;
+  font-size: var(--text-small);
+  padding: 0.45rem 0.8rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color var(--duration) var(--ease);
+}
+
+.tab:hover {
+  color: var(--ink);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.tab--on {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.tabs__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-tight);
+  padding-bottom: 0.3rem;
+}
+
+/* Resumen de una tarjeta archivada, en lugar de todo su contenido. */
+.report__folded {
+  margin: 0;
+  font-size: var(--text-small);
+  color: var(--ink-faint);
+}
+
+@media (max-width: 640px) {
+  .tabs {
+    align-items: stretch;
+  }
+
+  .tabs__actions {
+    justify-content: flex-end;
+  }
+}

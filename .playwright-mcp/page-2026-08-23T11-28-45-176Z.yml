@@ -1,0 +1,430 @@
+- main [ref=f9e12]:
+  - 'generic "Behaviour Recording and Monitoring form for Joshua Jones This form is used to collect data and information that supports the development of a positive behaviour support plan with associated support strategies for Joshua. The information collected in this form is provided directly to the Behaviour Support Practitioner of Darling Downs Therapy Services. Please provide detailed, unbiased and accurate information when completing this form. Please note: this behaviour recording sheet is submitted to the Behaviour Support Practitioner at Darling Downs Therapy Services to monitor behaviours over time to inform strategies in the positive behaviour support plan. Please also complete all necessary reporting and documentation as required by your employer in relation to Joshua''s support (e.g. progress notes, incident reports etc.)" [ref=f9e14]':
+    - generic [ref=f9e16]:
+      - button "Form Menu" [ref=f9e21] [cursor=pointer]
+      - heading "Behaviour Recording and Monitoring form for Joshua Jones" [level=1] [ref=f9e26]
+    - generic [ref=f9e28]:
+      - text: This form is used to collect data and information that supports the development of a positive behaviour support plan with associated support strategies for Joshua. The information collected in this form is provided directly to the Behaviour Support Practitioner of Darling Downs Therapy Services. Please provide detailed, unbiased and accurate information when completing this form.
+      - generic [ref=f9e29]: "Please note: this behaviour recording sheet is submitted to the Behaviour Support Practitioner at Darling Downs Therapy Services to monitor behaviours over time to inform strategies in the positive behaviour support plan. Please also complete all necessary reporting and documentation as required by your employer in relation to Joshua's support (e.g. progress notes, incident reports etc.)"
+  - generic [ref=f9e30]:
+    - generic [ref=f9e31]:
+      - generic [ref=f9e32]: When you submit this form, it will not automatically collect your details like name and email address unless you provide it yourself.
+      - generic [ref=f9e33]:
+        - generic [ref=f9e34]: "*"
+        - text: Required
+    - generic [ref=f9e35]:
+      - generic [ref=f9e36]:
+        - generic [ref=f9e39]:
+          - heading "1. Name of person completing this form.Required to answer" [level=2] [ref=f9e40]:
+            - generic [ref=f9e41]: "1."
+            - text: Name of person completing this form.
+            - note "Required to answer" [ref=f9e42]: "*"
+          - log [ref=f9e43]
+        - textbox "1. Name of person completing this form.Required to answer" [active] [ref=f9e47]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e48]:
+        - generic [ref=f9e51]:
+          - heading "2. Date.Required to answer" [level=2] [ref=f9e52]:
+            - generic [ref=f9e53]: "2."
+            - text: Date.
+            - note "Required to answer" [ref=f9e54]: "*"
+          - log [ref=f9e55]
+        - generic [ref=f9e61]:
+          - combobox "2. Date.Required to answer" [ref=f9e62]
+          - generic [ref=f9e63] [cursor=pointer]: 
+      - generic [ref=f9e64]:
+        - generic [ref=f9e67]:
+          - heading "3. What time did you work with Joshua? Please note, this is a period of time that you worked with Joshua, and is not an exact representation of your shift time. Required to answer" [level=2] [ref=f9e68]:
+            - generic [ref=f9e69]: "3."
+            - generic [ref=f9e70]: What time did you work with Joshua? Please note, this is a period of time that you worked with Joshua, and is not an exact representation of your shift time.
+            - note "Required to answer" [ref=f9e71]: "*"
+          - log [ref=f9e72]
+        - radiogroup "3. What time did you work with Joshua? Please note, this is a period of time that you worked with Joshua, and is not an exact representation of your shift time. Required to answer" [ref=f9e74]:
+          - generic [ref=f9e75]:
+            - generic [ref=f9e78]:
+              - radio "6.00am to 9.00am" [ref=f9e80] [cursor=pointer]
+              - generic "6.00am to 9.00am" [ref=f9e84]
+            - generic [ref=f9e87]:
+              - radio "9.00am to 12.00pm" [ref=f9e89] [cursor=pointer]
+              - generic "9.00am to 12.00pm" [ref=f9e93]
+            - generic [ref=f9e96]:
+              - radio "12.00pm to 3.00pm" [ref=f9e98] [cursor=pointer]
+              - generic "12.00pm to 3.00pm" [ref=f9e102]
+            - generic [ref=f9e105]:
+              - radio "3.00pm to 6.00pm" [ref=f9e107] [cursor=pointer]
+              - generic "3.00pm to 6.00pm" [ref=f9e111]
+            - generic [ref=f9e114]:
+              - radio "6.00pm to 10.00pm" [checked] [ref=f9e116] [cursor=pointer]
+              - generic "6.00pm to 10.00pm" [ref=f9e120]
+      - generic [ref=f9e121]:
+        - generic [ref=f9e124]:
+          - heading "4. Did you support Joshua at home or in the community during your shift?Required to answer" [level=2] [ref=f9e125]:
+            - generic [ref=f9e126]: "4."
+            - text: Did you support Joshua at home or in the community during your shift?
+            - note "Required to answer" [ref=f9e127]: "*"
+          - log [ref=f9e128]
+        - radiogroup "4. Did you support Joshua at home or in the community during your shift?Required to answer" [ref=f9e130]:
+          - generic [ref=f9e131]:
+            - generic [ref=f9e134]:
+              - radio "At home" [checked] [ref=f9e136] [cursor=pointer]
+              - generic "At home" [ref=f9e140]
+            - generic [ref=f9e143]:
+              - radio "In the community" [ref=f9e145] [cursor=pointer]
+              - generic "In the community" [ref=f9e149]
+            - generic [ref=f9e152]:
+              - radio "Both at home and in the community" [ref=f9e154] [cursor=pointer]
+              - generic "Both at home and in the community" [ref=f9e158]
+      - generic [ref=f9e159]:
+        - generic [ref=f9e162]:
+          - heading "5. What activities did Joshua engage in today during your shift? Required to answer" [level=2] [ref=f9e163]:
+            - generic [ref=f9e164]: "5."
+            - text: What activities did Joshua engage in today during your shift?
+            - note "Required to answer" [ref=f9e165]: "*"
+          - log [ref=f9e166]
+        - textbox "5. What activities did Joshua engage in today during your shift? Required to answer" [ref=f9e170]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e171]:
+        - generic [ref=f9e174]:
+          - heading "6. How many times did Joshua make phone calls to, or requested to make a phone call to, the Public Trustee?Required to answer" [level=2] [ref=f9e175]:
+            - generic [ref=f9e176]: "6."
+            - generic [ref=f9e177]: How many times did Joshua make phone calls to, or requested to make a phone call to, the Public Trustee?
+            - note "Required to answer" [ref=f9e178]: "*"
+          - log [ref=f9e179]
+        - radiogroup "6. How many times did Joshua make phone calls to, or requested to make a phone call to, the Public Trustee?Required to answer" [ref=f9e181]:
+          - generic [ref=f9e182]:
+            - generic [ref=f9e185]:
+              - radio "0 - 5 times" [ref=f9e187] [cursor=pointer]
+              - generic "0 - 5 times" [ref=f9e191]
+            - generic [ref=f9e194]:
+              - radio "5 - 10 times" [ref=f9e196] [cursor=pointer]
+              - generic "5 - 10 times" [ref=f9e200]
+            - generic [ref=f9e203]:
+              - radio "10 - 15 times" [ref=f9e205] [cursor=pointer]
+              - generic "10 - 15 times" [ref=f9e209]
+            - generic [ref=f9e212]:
+              - radio "Greater than 15 times." [ref=f9e214] [cursor=pointer]
+              - generic "Greater than 15 times." [ref=f9e218]
+      - generic [ref=f9e219]:
+        - generic [ref=f9e222]:
+          - heading "7. How many times did Joshua make phone calls to, or requested to make a phone call to, his General Practitioner?Required to answer" [level=2] [ref=f9e223]:
+            - generic [ref=f9e224]: "7."
+            - generic [ref=f9e225]: How many times did Joshua make phone calls to, or requested to make a phone call to, his General Practitioner?
+            - note "Required to answer" [ref=f9e226]: "*"
+          - log [ref=f9e227]
+        - radiogroup "7. How many times did Joshua make phone calls to, or requested to make a phone call to, his General Practitioner?Required to answer" [ref=f9e229]:
+          - generic [ref=f9e230]:
+            - generic [ref=f9e233]:
+              - radio "0 - 5 times" [ref=f9e235] [cursor=pointer]
+              - generic "0 - 5 times" [ref=f9e239]
+            - generic [ref=f9e242]:
+              - radio "5 - 10 times" [ref=f9e244] [cursor=pointer]
+              - generic "5 - 10 times" [ref=f9e248]
+            - generic [ref=f9e251]:
+              - radio "10 - 15 times" [ref=f9e253] [cursor=pointer]
+              - generic "10 - 15 times" [ref=f9e257]
+            - generic [ref=f9e260]:
+              - radio "Greater than 15 times." [ref=f9e262] [cursor=pointer]
+              - generic "Greater than 15 times." [ref=f9e266]
+      - generic [ref=f9e267]:
+        - generic [ref=f9e270]:
+          - heading "8. How many times did Joshua need to be verbally prompted back to task? Verbal prompting can include prompts that direct Joshua's attention back to the task on hand, or reminds Joshua of the support arrangement that he is in today. For example 'Remember Joshua, you are in group supports today, so we are unable to go to QLD Transport', or 'Joshua, right now we are completing your laundry'. Prompting also includes reminding Joshua of socially appropriate behaviour. Required to answer" [level=2] [ref=f9e271]:
+            - generic [ref=f9e272]: "8."
+            - generic [ref=f9e273]: How many times did Joshua need to be verbally prompted back to task? Verbal prompting can include prompts that direct Joshua's attention back to the task on hand, or reminds Joshua of the support arrangement that he is in today. For example 'Remember Joshua, you are in group supports today, so we are unable to go to QLD Transport', or 'Joshua, right now we are completing your laundry'. Prompting also includes reminding Joshua of socially appropriate behaviour.
+            - note "Required to answer" [ref=f9e274]: "*"
+          - log [ref=f9e275]
+        - radiogroup "8. How many times did Joshua need to be verbally prompted back to task? Verbal prompting can include prompts that direct Joshua's attention back to the task on hand, or reminds Joshua of the support arrangement that he is in today. For example 'Remember Joshua, you are in group supports today, so we are unable to go to QLD Transport', or 'Joshua, right now we are completing your laundry'. Prompting also includes reminding Joshua of socially appropriate behaviour. Required to answer" [ref=f9e277]:
+          - generic [ref=f9e278]:
+            - generic [ref=f9e281]:
+              - radio "0 - 5 times" [ref=f9e283] [cursor=pointer]
+              - generic "0 - 5 times" [ref=f9e287]
+            - generic [ref=f9e290]:
+              - radio "5 - 10 times" [ref=f9e292] [cursor=pointer]
+              - generic "5 - 10 times" [ref=f9e296]
+            - generic [ref=f9e299]:
+              - radio "10 - 15 times" [ref=f9e301] [cursor=pointer]
+              - generic "10 - 15 times" [ref=f9e305]
+            - generic [ref=f9e308]:
+              - radio "Greater than 15 times." [ref=f9e310] [cursor=pointer]
+              - generic "Greater than 15 times." [ref=f9e314]
+      - generic [ref=f9e315]:
+        - generic [ref=f9e318]:
+          - heading "9. Did Joshua require further prompting to remain on task at any point during your shift? This includes reminding Joshua of maintaining personal space whilst in public. Required to answer" [level=2] [ref=f9e319]:
+            - generic [ref=f9e320]: "9."
+            - generic [ref=f9e321]: Did Joshua require further prompting to remain on task at any point during your shift? This includes reminding Joshua of maintaining personal space whilst in public.
+            - note "Required to answer" [ref=f9e322]: "*"
+          - log [ref=f9e323]
+        - radiogroup "9. Did Joshua require further prompting to remain on task at any point during your shift? This includes reminding Joshua of maintaining personal space whilst in public. Required to answer" [ref=f9e325]:
+          - generic [ref=f9e326]:
+            - generic [ref=f9e329]:
+              - radio "No" [checked] [ref=f9e331] [cursor=pointer]
+              - generic "No" [ref=f9e335]
+            - generic [ref=f9e338]:
+              - radio "Gestural Prompt" [ref=f9e340] [cursor=pointer]
+              - generic "Gestural Prompt" [ref=f9e344]
+            - generic [ref=f9e347]:
+              - radio "Physical Prompt" [ref=f9e349] [cursor=pointer]
+              - generic "Physical Prompt" [ref=f9e353]
+      - generic [ref=f9e354]:
+        - generic [ref=f9e357]:
+          - heading "10. If Joshua required further prompting, please provide additional detail." [level=2] [ref=f9e358]:
+            - generic [ref=f9e359]: "10."
+            - generic [ref=f9e360]: If Joshua required further prompting, please provide additional detail.
+          - log [ref=f9e361]
+        - textbox "10. If Joshua required further prompting, please provide additional detail." [ref=f9e365]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e366]:
+        - generic [ref=f9e369]:
+          - heading "11. Did Joshua display any Precursor Behaviours? Select all that may apply.Required to answer" [level=2] [ref=f9e370]:
+            - generic [ref=f9e371]: "11."
+            - generic [ref=f9e372]: Did Joshua display any Precursor Behaviours? Select all that may apply.
+            - note "Required to answer" [ref=f9e374]: "*"
+          - log [ref=f9e375]
+        - group "11. Did Joshua display any Precursor Behaviours? Select all that may apply.Required to answer" [ref=f9e377]:
+          - generic [ref=f9e378]:
+            - generic [ref=f9e381]:
+              - checkbox "None noted" [ref=f9e383] [cursor=pointer]
+              - generic "None noted" [ref=f9e387]
+            - generic [ref=f9e390]:
+              - checkbox "Scratching on surfaces with fingertips" [ref=f9e392] [cursor=pointer]
+              - generic "Scratching on surfaces with fingertips" [ref=f9e396]
+            - generic [ref=f9e399]:
+              - checkbox "Audible swallowing" [ref=f9e401] [cursor=pointer]
+              - generic "Audible swallowing" [ref=f9e405]
+            - generic [ref=f9e408]:
+              - checkbox "Excessive phone usage, including phone calls" [ref=f9e410] [cursor=pointer]
+              - generic "Excessive phone usage, including phone calls" [ref=f9e414]
+            - generic [ref=f9e417]:
+              - checkbox "Responding to auditory hallucinations" [ref=f9e419] [cursor=pointer]
+              - generic "Responding to auditory hallucinations" [ref=f9e423]
+            - generic [ref=f9e426]:
+              - checkbox "Expressing an urge to bite others" [ref=f9e428] [cursor=pointer]
+              - generic "Expressing an urge to bite others" [ref=f9e432]
+          - generic [ref=f9e434]:
+            - checkbox "Other answer" [ref=f9e436] [cursor=pointer]
+            - textbox "Other answer" [ref=f9e442]:
+              - /placeholder: Other
+      - generic [ref=f9e443]:
+        - generic [ref=f9e446]:
+          - heading "12. If other is selected in the above question, please describe in detail the unlisted precursor behaviour." [level=2] [ref=f9e447]:
+            - generic [ref=f9e448]: "12."
+            - generic [ref=f9e449]: If other is selected in the above question, please describe in detail the unlisted precursor behaviour.
+          - log [ref=f9e450]
+        - textbox "12. If other is selected in the above question, please describe in detail the unlisted precursor behaviour." [ref=f9e454]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e455]:
+        - generic [ref=f9e458]:
+          - heading "13. If Joshua engaged in precursor behaviour, at what time/s was the behaviour noted, and how was Joshua engaged at the time? Example, was Joshua on community access? Was Joshua with any one else at the time?" [level=2] [ref=f9e459]:
+            - generic [ref=f9e460]: "13."
+            - generic [ref=f9e461]: If Joshua engaged in precursor behaviour, at what time/s was the behaviour noted, and how was Joshua engaged at the time? Example, was Joshua on community access? Was Joshua with any one else at the time?
+          - log [ref=f9e462]
+        - textbox "13. If Joshua engaged in precursor behaviour, at what time/s was the behaviour noted, and how was Joshua engaged at the time? Example, was Joshua on community access? Was Joshua with any one else at the time?" [ref=f9e466]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e467]:
+        - generic [ref=f9e470]:
+          - heading "14. Describe in detail your response to Joshua while Joshua was displaying precursor behaviour, if relevant." [level=2] [ref=f9e471]:
+            - generic [ref=f9e472]: "14."
+            - generic [ref=f9e473]: Describe in detail your response to Joshua while Joshua was displaying precursor behaviour, if relevant.
+          - log [ref=f9e474]
+        - textbox "14. Describe in detail your response to Joshua while Joshua was displaying precursor behaviour, if relevant." [ref=f9e478]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e479]:
+        - generic [ref=f9e482]:
+          - heading "15. Was your response successful in redirecting Joshua?" [level=2] [ref=f9e483]:
+            - generic [ref=f9e484]: "15."
+            - text: Was your response successful in redirecting Joshua?
+          - button "Clear Selection" [ref=f9e486] [cursor=pointer]
+          - log [ref=f9e490]
+        - radiogroup "15. Was your response successful in redirecting Joshua? Clear Selection" [ref=f9e492]:
+          - generic [ref=f9e493]:
+            - generic [ref=f9e496]:
+              - radio "Yes" [ref=f9e498] [cursor=pointer]
+              - generic "Yes" [ref=f9e502]
+            - generic [ref=f9e505]:
+              - radio "No" [ref=f9e507] [cursor=pointer]
+              - generic "No" [ref=f9e511]
+            - generic [ref=f9e514]:
+              - radio "Partially" [checked] [ref=f9e516] [cursor=pointer]
+              - generic "Partially" [ref=f9e520]
+      - generic [ref=f9e521]:
+        - generic [ref=f9e524]:
+          - heading "16. If you responded either no or partially in the above question, please explain why you believe your response was not successful." [level=2] [ref=f9e525]:
+            - generic [ref=f9e526]: "16."
+            - generic [ref=f9e527]: If you responded either no or partially in the above question, please explain why you believe your response was not successful.
+          - log [ref=f9e528]
+        - textbox "16. If you responded either no or partially in the above question, please explain why you believe your response was not successful." [ref=f9e532]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e533]:
+        - generic [ref=f9e536]:
+          - heading "17. Did Joshua engage in a Behaviours of Concern?Required to answer" [level=2] [ref=f9e537]:
+            - generic [ref=f9e538]: "17."
+            - generic [ref=f9e539]: Did Joshua engage in a Behaviours of Concern?
+            - note "Required to answer" [ref=f9e540]: "*"
+          - log [ref=f9e541]
+        - group "17. Did Joshua engage in a Behaviours of Concern?Required to answer" [ref=f9e543]:
+          - generic [ref=f9e544]:
+            - generic [ref=f9e547]:
+              - checkbox "None noted" [ref=f9e549] [cursor=pointer]
+              - generic "None noted" [ref=f9e553]
+            - generic [ref=f9e556]:
+              - checkbox "Hyper fixated and repetitive behaviours." [checked] [ref=f9e558] [cursor=pointer]
+              - generic "Hyper fixated and repetitive behaviours." [ref=f9e563]
+            - generic [ref=f9e566]:
+              - checkbox "Avoidance." [checked] [ref=f9e568] [cursor=pointer]
+              - generic "Avoidance." [ref=f9e573]
+            - generic [ref=f9e576]:
+              - checkbox "Speaking of desire or intent to suicide." [ref=f9e578] [cursor=pointer]
+              - generic "Speaking of desire or intent to suicide." [ref=f9e582]
+            - generic [ref=f9e585]:
+              - checkbox "Speaking of desire or intent for self-injurious behaviour." [ref=f9e587] [cursor=pointer]
+              - generic "Speaking of desire or intent for self-injurious behaviour." [ref=f9e591]
+            - generic [ref=f9e594]:
+              - checkbox "Excessive praying." [ref=f9e596] [cursor=pointer]
+              - generic "Excessive praying." [ref=f9e600]
+            - generic [ref=f9e603]:
+              - checkbox "Requesting pseudoscience for schizophrenia." [ref=f9e605] [cursor=pointer]
+              - generic "Requesting pseudoscience for schizophrenia." [ref=f9e609]
+            - generic [ref=f9e612]:
+              - checkbox "Food gorging." [ref=f9e614] [cursor=pointer]
+              - generic "Food gorging." [ref=f9e618]
+            - generic [ref=f9e621]:
+              - checkbox "Engaging with family." [ref=f9e623] [cursor=pointer]
+              - generic "Engaging with family." [ref=f9e627]
+            - generic [ref=f9e630]:
+              - checkbox "Exhibiting behaviours that isolates others." [ref=f9e632] [cursor=pointer]
+              - generic "Exhibiting behaviours that isolates others." [ref=f9e636]
+          - generic [ref=f9e638]:
+            - checkbox "Other answer" [ref=f9e640] [cursor=pointer]
+            - textbox "Other answer" [ref=f9e646]:
+              - /placeholder: Other
+      - generic [ref=f9e647]:
+        - generic [ref=f9e650]:
+          - heading "18. Did Joshua engage in a Behaviours of Harm?Required to answer" [level=2] [ref=f9e651]:
+            - generic [ref=f9e652]: "18."
+            - generic [ref=f9e653]: Did Joshua engage in a Behaviours of Harm?
+            - note "Required to answer" [ref=f9e654]: "*"
+          - log [ref=f9e655]
+        - group "18. Did Joshua engage in a Behaviours of Harm?Required to answer" [ref=f9e657]:
+          - generic [ref=f9e658]:
+            - generic [ref=f9e661]:
+              - checkbox "None noted" [ref=f9e663] [cursor=pointer]
+              - generic "None noted" [ref=f9e667]
+            - generic [ref=f9e670]:
+              - checkbox "Engaging in self-injurious behaviour." [ref=f9e672] [cursor=pointer]
+              - generic "Engaging in self-injurious behaviour." [ref=f9e676]
+            - generic [ref=f9e679]:
+              - checkbox "Attempting to engage women socially." [ref=f9e681] [cursor=pointer]
+              - generic "Attempting to engage women socially." [ref=f9e685]
+            - generic [ref=f9e688]:
+              - checkbox "Sending socially inappropriate content to others online." [ref=f9e690] [cursor=pointer]
+              - generic "Sending socially inappropriate content to others online." [ref=f9e694]
+            - generic [ref=f9e697]:
+              - checkbox "Absconding." [ref=f9e699] [cursor=pointer]
+              - generic "Absconding." [ref=f9e703]
+          - generic [ref=f9e705]:
+            - checkbox "Other answer" [ref=f9e707] [cursor=pointer]
+            - textbox "Other answer" [ref=f9e713]:
+              - /placeholder: Other
+      - generic [ref=f9e714]:
+        - generic [ref=f9e717]:
+          - 'heading "19. If you have selected either a behaviour of harm or concern, or other in the above question, please describe the behaviour. Note: Please be as descriptive as possible. Describe all aspects of Joshua''s environment at the time of behaviour." [level=2] [ref=f9e718]':
+            - generic [ref=f9e719]: "19."
+            - generic [ref=f9e720]:
+              - text: If you have selected
+              - generic [ref=f9e721]: either
+              - generic [ref=f9e722]: a
+              - text: behaviour of harm or concern
+              - generic [ref=f9e723]: ", or"
+              - text: other
+              - generic [ref=f9e724]: in the above question, please describe the behaviour.
+              - text: "Note: Please be as descriptive as possible. Describe all aspects of Joshua's environment at the time of behaviour."
+          - log [ref=f9e725]
+        - 'textbox "19. If you have selected either a behaviour of harm or concern, or other in the above question, please describe the behaviour. Note: Please be as descriptive as possible. Describe all aspects of Joshua''s environment at the time of behaviour." [ref=f9e729]':
+          - /placeholder: Enter your answer
+      - generic [ref=f9e730]:
+        - generic [ref=f9e733]:
+          - heading "20. What was the intensity of behaviour? 1 - Emotional Distress Only 2 - Made Contact or Property Damage - No First Aid 3 - First Aid Required or Repairs/Replacements to Property 4 - Emergency Services/External Assistance Required" [level=2] [ref=f9e734]:
+            - generic [ref=f9e735]: "20."
+            - generic [ref=f9e736]: What was the intensity of behaviour? 1 - Emotional Distress Only2 - Made Contact or Property Damage - No First Aid3 - First Aid Required or Repairs/Replacements to Property4 - Emergency Services/External Assistance Required
+          - log [ref=f9e737]
+        - radiogroup "20. What was the intensity of behaviour? 1 - Emotional Distress Only 2 - Made Contact or Property Damage - No First Aid 3 - First Aid Required or Repairs/Replacements to Property 4 - Emergency Services/External Assistance Required" [ref=f9e740]:
+          - radio "1" [ref=f9e743] [cursor=pointer]
+          - radio "2" [ref=f9e746] [cursor=pointer]
+          - radio "3" [ref=f9e749] [cursor=pointer]
+          - radio "4" [ref=f9e752] [cursor=pointer]
+          - radio "5" [ref=f9e755] [cursor=pointer]
+      - generic [ref=f9e756]:
+        - generic [ref=f9e759]:
+          - heading "21. If Joshua engaged in a behaviour of harm or concern, at what time was the behaviour? And where was Joshua at the time of behaviour?" [level=2] [ref=f9e760]:
+            - generic [ref=f9e761]: "21."
+            - generic [ref=f9e762]:
+              - generic [ref=f9e763]: If Joshua engaged in a
+              - text: behaviour of harm or concern, at what time was the behaviour? And where was Joshua at the time of behaviour?
+          - log [ref=f9e764]
+        - textbox "21. If Joshua engaged in a behaviour of harm or concern, at what time was the behaviour? And where was Joshua at the time of behaviour?" [ref=f9e768]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e769]:
+        - generic [ref=f9e772]:
+          - heading "22. Describe in detail your response to Joshua during the behaviour of harm or concern, if relevant." [level=2] [ref=f9e773]:
+            - generic [ref=f9e774]: "22."
+            - generic [ref=f9e775]:
+              - generic [ref=f9e776]: Describe in detail your response to Joshua during the
+              - generic [ref=f9e777]: behaviour of harm or concern,
+              - text: if relevant.
+          - log [ref=f9e778]
+        - textbox "22. Describe in detail your response to Joshua during the behaviour of harm or concern, if relevant." [ref=f9e782]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e783]:
+        - generic [ref=f9e786]:
+          - heading "23. Was your response successful in helping Joshua to regulate and deescalate the behaviour?" [level=2] [ref=f9e787]:
+            - generic [ref=f9e788]: "23."
+            - text: Was your response successful in helping Joshua to regulate and deescalate the behaviour?
+          - button "Clear Selection" [ref=f9e790] [cursor=pointer]
+          - log [ref=f9e794]
+        - radiogroup "23. Was your response successful in helping Joshua to regulate and deescalate the behaviour? Clear Selection" [ref=f9e796]:
+          - generic [ref=f9e797]:
+            - generic [ref=f9e800]:
+              - radio "Yes" [checked] [ref=f9e802] [cursor=pointer]
+              - generic "Yes" [ref=f9e806]
+            - generic [ref=f9e809]:
+              - radio "No" [ref=f9e811] [cursor=pointer]
+              - generic "No" [ref=f9e815]
+            - generic [ref=f9e818]:
+              - radio "Partially" [ref=f9e820] [cursor=pointer]
+              - generic "Partially" [ref=f9e824]
+      - generic [ref=f9e825]:
+        - generic [ref=f9e828]:
+          - heading "24. Once Joshua was regulated, what did he do? Did he re-engage with supports?" [level=2] [ref=f9e829]:
+            - generic [ref=f9e830]: "24."
+            - generic [ref=f9e831]: Once Joshua was regulated, what did he do? Did he re-engage with supports?
+          - log [ref=f9e832]
+        - textbox "24. Once Joshua was regulated, what did he do? Did he re-engage with supports?" [ref=f9e836]:
+          - /placeholder: Enter your answer
+      - generic [ref=f9e837]:
+        - generic [ref=f9e840]:
+          - heading "25. Any other comments?" [level=2] [ref=f9e841]:
+            - generic [ref=f9e842]: "25."
+            - text: Any other comments?
+          - log [ref=f9e843]
+        - textbox "25. Any other comments?" [ref=f9e847]:
+          - /placeholder: Enter your answer
+    - button "Submit" [ref=f9e850] [cursor=pointer]
+    - generic [ref=f9e851]:
+      - text: Never give out your password.
+      - link "Report abuse" [ref=f9e852] [cursor=pointer]
+  - generic [ref=f9e853]:
+    - link "Microsoft 365" [ref=f9e855] [cursor=pointer]
+    - contentinfo [ref=f9e856]:
+      - generic [ref=f9e857]:
+        - generic [ref=f9e858]: This content is created by the owner of the form. The data you submit will be sent to the form owner. Microsoft is not responsible for the privacy or security practices of its customers, including those of this form owner. Never give out your password.
+        - generic [ref=f9e859]:
+          - generic [ref=f9e860]:
+            - link "Microsoft Forms" [ref=f9e861] [cursor=pointer]
+            - text: "| AI-Powered surveys, quizzes and polls"
+            - link "Create my own form" [ref=f9e863] [cursor=pointer]
+          - generic [ref=f9e864]:
+            - text: The owner of this form has not provided a privacy statement as to how they will use your response data. Do not provide personal or sensitive information. |
+            - link "Consumer Health Privacy" [ref=f9e866] [cursor=pointer]:
+              - /url: https://go.microsoft.com/fwlink/?linkid=2259814
+            - text: "|"
+            - link "Terms of use" [ref=f9e867] [cursor=pointer]:
+              - /url: https://go.microsoft.com/fwlink/?linkid=866263

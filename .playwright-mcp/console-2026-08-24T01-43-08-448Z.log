@@ -1,0 +1,84 @@
+[     381ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:21606
+[  203981ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:5173/src/components/ShiftReports.tsx?t=1787535992391:0
+[  203982ms] [ERROR] [vite] Failed to reload /src/components/ShiftReports.tsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5173/@vite/client:881
+[  249692ms] Error: useI18n necesita estar dentro de <I18nProvider>.
+    at useI18n (http://localhost:5173/src/lib/i18n.tsx?t=1787536035884:70:21)
+    at App (http://localhost:5173/src/App.tsx?t=1787536035881:43:28)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:11594:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14972:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:15960:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3678:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3703:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3737:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19816:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19249:20)
+[  249693ms] Error: useI18n necesita estar dentro de <I18nProvider>.
+    at useI18n (http://localhost:5173/src/lib/i18n.tsx?t=1787536035884:70:21)
+    at App (http://localhost:5173/src/App.tsx?t=1787536035881:43:28)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:11594:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14972:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:15960:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3678:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3703:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3737:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19816:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19249:20)
+[  249748ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (http://localhost:5173/src/App.tsx?t=1787536035881:43:28)
+    at I18nProvider (http://localhost:5173/src/lib/i18n.tsx?t=1787536035881:41:32)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14077
+[  249792ms] Error: useI18n necesita estar dentro de <I18nProvider>.
+    at useI18n (http://localhost:5173/src/lib/i18n.tsx?t=1787536035884:70:21)
+    at App (http://localhost:5173/src/App.tsx?t=1787536035881:43:28)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:11594:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14972:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:15960:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19804:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19249:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19188:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19167:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:18784:28)
+[  249851ms] Error: useI18n necesita estar dentro de <I18nProvider>.
+    at useI18n (http://localhost:5173/src/lib/i18n.tsx?t=1787536035884:70:21)
+    at App (http://localhost:5173/src/App.tsx?t=1787536035884:43:28)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:11594:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14972:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:15960:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3678:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3703:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3737:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19816:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19249:20)
+[  249875ms] Error: useI18n necesita estar dentro de <I18nProvider>.
+    at useI18n (http://localhost:5173/src/lib/i18n.tsx?t=1787536035884:70:21)
+    at App (http://localhost:5173/src/App.tsx?t=1787536035884:43:28)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:11594:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14972:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:15960:22)
+    at HTMLUnknownElement.callCallback2 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3678:22)
+    at Object.invokeGuardedCallbackDev (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3703:24)
+    at invokeGuardedCallback (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:3737:39)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19816:15)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19249:20)
+[  249873ms] [ERROR] The above error occurred in the <App> component:
+
+    at App (http://localhost:5173/src/App.tsx?t=1787536035884:43:28)
+    at I18nProvider (http://localhost:5173/src/lib/i18n.tsx?t=1787536035881:41:32)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. @ http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14077
+[  249924ms] Error: useI18n necesita estar dentro de <I18nProvider>.
+    at useI18n (http://localhost:5173/src/lib/i18n.tsx?t=1787536035884:70:21)
+    at App (http://localhost:5173/src/App.tsx?t=1787536035884:43:28)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:11594:26)
+    at mountIndeterminateComponent (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:14972:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:15960:22)
+    at beginWork$1 (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19804:22)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19249:20)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19188:13)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:19167:15)
+    at recoverFromConcurrentError (http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:18784:28)
+[  250207ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/chunk-HCIN4FJ4.js?v=980fc163:21606
