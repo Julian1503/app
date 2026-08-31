@@ -48,7 +48,18 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   }
 
   const text = await response.text();
-  const payload = text ? (JSON.parse(text) as Record<string, unknown>) : {};
+
+  // Un error de la plataforma (un 500 de Vercel, un HTML de proxy) no viene en
+  // JSON. Parsear sin red hacia que el SyntaxError tapara el error de verdad y
+  // la UI mostrara "error inesperado" en vez de decir que paso.
+  let payload: Record<string, unknown> = {};
+  if (text) {
+    try {
+      payload = JSON.parse(text) as Record<string, unknown>;
+    } catch {
+      throw new ApiError(text.trim().slice(0, 300), response.status);
+    }
+  }
 
   if (!response.ok) {
     throw new ApiError(
