@@ -9,9 +9,9 @@
  *
  *  Uso: npm run payslips:import */
 
-import { config } from '../server/config.ts';
-import { writePayslips } from '../server/db/payslips.ts';
-import { parsePayslipsFromDisk } from '../server/payslips/import.ts';
+import { config } from '../server/config.js';
+import { writePayslips } from '../server/db/payslips.js';
+import { parsePayslipsFromDisk } from '../server/payslips/import.js';
 
 async function main(): Promise<void> {
   console.log(`Leyendo ${config.payslipsDir}\n`);

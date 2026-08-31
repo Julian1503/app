@@ -1,9 +1,9 @@
 /** Reconciliacion de km de viaje: lo declarado en el comentario del timesheet
  *  contra lo que el payslip pago bajo REIMBURSEMENTS > Travel Costs. */
 
-import type { I18n } from '../i18n/index.ts';
-import type { Finding, Payslip, Shift } from '../types.ts';
-import { KM_SELF_APPROVE_LIMIT } from '../visa/rules.ts';
+import type { I18n } from '../i18n/index.js';
+import type { Finding, Payslip, Shift } from '../types.js';
+import { KM_SELF_APPROVE_LIMIT } from '../visa/rules.js';
 
 /** Frases con las que se declaran los km dentro del `employeeComment`. */
 const KM_PATTERN = /(\d+(?:[.,]\d+)?)\s*(?:km|kms|kilometros|kilometres)\b/i;

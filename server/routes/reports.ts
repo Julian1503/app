@@ -1,19 +1,19 @@
 /** Reportes de turno: listado, guardado, mapeo al formulario y salida final. */
 
 import { Router, type Request, type Response } from 'express';
-import { config } from '../config.ts';
-import { createI18n, resolveLocale } from '../../shared/i18n/index.ts';
-import { renderForForm, usableAnswers } from '../../shared/form/answers.ts';
-import { FORM_FIELDS } from '../../shared/form/schema.ts';
-import { BEHAVIOURS } from '../../shared/reports/behaviours.ts';
-import { selectClientShifts } from '../../shared/reports/select.ts';
-import { PRESENTATION_TAGS } from '../../shared/reports/tags.ts';
-import { emptyReport, type ReportEntry } from '../../shared/reports/types.ts';
-import { MissingApiKeyError } from '../reports/claude.ts';
-import { extractForm } from '../form/extract.ts';
-import { finaliseForm } from '../form/finalise.ts';
-import { parseReportBody, readReports, writeReport } from '../reports/store.ts';
-import { readShifts } from './sync.ts';
+import { config } from '../config.js';
+import { createI18n, resolveLocale } from '../../shared/i18n/index.js';
+import { renderForForm, usableAnswers } from '../../shared/form/answers.js';
+import { FORM_FIELDS } from '../../shared/form/schema.js';
+import { BEHAVIOURS } from '../../shared/reports/behaviours.js';
+import { selectClientShifts } from '../../shared/reports/select.js';
+import { PRESENTATION_TAGS } from '../../shared/reports/tags.js';
+import { emptyReport, type ReportEntry } from '../../shared/reports/types.js';
+import { MissingApiKeyError } from '../reports/claude.js';
+import { extractForm } from '../form/extract.js';
+import { finaliseForm } from '../form/finalise.js';
+import { parseReportBody, readReports, writeReport } from '../reports/store.js';
+import { readShifts } from './sync.js';
 
 export const reportsRouter = Router();
 

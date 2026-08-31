@@ -18,8 +18,8 @@
  *    $1000. Los tramos altos (>$1282/semana) estan derivados por continuidad y
  *    solo uno esta contrastado contra un payslip real. */
 
-import type { IsoDate } from '../types.ts';
-import { financialYearOf } from './calendar.ts';
+import type { IsoDate } from '../types.js';
+import { financialYearOf } from './calendar.js';
 
 /** Un tramo: aplica cuando `x` es menor que `limit`. */
 interface Band {

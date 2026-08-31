@@ -2,9 +2,9 @@
  *  tabla tiene RLS habilitada y sin politicas, o sea que solo entra el servidor
  *  con la service_role key. Es el equivalente al 0600 que tenia el archivo. */
 
-import type { FieldAnswer, Gap } from '../../shared/form/answers.ts';
-import type { Observation, ReportStatus, ShiftReport } from '../../shared/reports/types.ts';
-import { assertOk, db, unwrap } from './client.ts';
+import type { FieldAnswer, Gap } from '../../shared/form/answers.js';
+import type { Observation, ReportStatus, ShiftReport } from '../../shared/reports/types.js';
+import { assertOk, db, unwrap } from './client.js';
 
 interface ReportRow {
   shift_id: string;

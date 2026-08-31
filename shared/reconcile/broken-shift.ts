@@ -11,10 +11,10 @@
  *    - Si el empleador sostiene que SI lo son, entonces incumple el tope de 12 h
  *      y corresponde double time por las horas posteriores a la hora 12. */
 
-import { roundHours } from '../dates.ts';
-import type { I18n } from '../i18n/index.ts';
-import type { Finding, Shift } from '../types.ts';
-import { BROKEN_SHIFT_MAX_SPAN_HOURS } from '../visa/rules.ts';
+import { roundHours } from '../dates.js';
+import type { I18n } from '../i18n/index.js';
+import type { Finding, Shift } from '../types.js';
+import { BROKEN_SHIFT_MAX_SPAN_HOURS } from '../visa/rules.js';
 
 export interface SpanDay {
   readonly date: string;

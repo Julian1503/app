@@ -1,6 +1,6 @@
 /** Ensamblado del reporte completo. Funcion pura: mismas entradas, mismo reporte. */
 
-import { roundHours } from './dates.ts';
+import { roundHours } from './dates.js';
 import {
   checkBackPayBreakdown,
   checkForecastAgainstPayslips,
@@ -8,18 +8,18 @@ import {
   checkHolidayCalendar,
   checkPayrollModel,
   checkTaxTableCoverage,
-} from './pay/findings.ts';
-import { buildPaySummary } from './pay/summary.ts';
-import type { I18n } from './i18n/index.ts';
-import { checkBrokenShifts } from './reconcile/broken-shift.ts';
-import { reconcileKm } from './reconcile/km.ts';
-import { checkMissingPayslips, checkPaidHours } from './reconcile/payslip-vs-roster.ts';
-import type { AnalysisReport, Finding, IsoDate, Payslip, Shift } from './types.ts';
-import { planDrops } from './visa/drop-planner.ts';
-import { checkFortnights } from './visa/findings.ts';
-import type { TermBreak } from './visa/fortnights.ts';
-import { buildFortnights, currentFortnight, upcomingFortnights } from './visa/fortnights.ts';
-import { aggregateDaily } from './visa/shift-hours.ts';
+} from './pay/findings.js';
+import { buildPaySummary } from './pay/summary.js';
+import type { I18n } from './i18n/index.js';
+import { checkBrokenShifts } from './reconcile/broken-shift.js';
+import { reconcileKm } from './reconcile/km.js';
+import { checkMissingPayslips, checkPaidHours } from './reconcile/payslip-vs-roster.js';
+import type { AnalysisReport, Finding, IsoDate, Payslip, Shift } from './types.js';
+import { planDrops } from './visa/drop-planner.js';
+import { checkFortnights } from './visa/findings.js';
+import type { TermBreak } from './visa/fortnights.js';
+import { buildFortnights, currentFortnight, upcomingFortnights } from './visa/fortnights.js';
+import { aggregateDaily } from './visa/shift-hours.js';
 
 const SEVERITY_ORDER: Record<Finding['severity'], number> = {
   critical: 0,

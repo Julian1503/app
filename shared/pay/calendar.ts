@@ -2,9 +2,9 @@
  *  siguiente, verificado en los 35 payslips: `Pay Period: 06/08/2026 -
  *  12/08/2026`, `Payment Date: 13/08/2026`. */
 
-import { addDays, weekday } from '../dates.ts';
-import type { IsoDate } from '../types.ts';
-import { PAYMENT_LAG_DAYS, PAY_WEEK_START_WEEKDAY } from './rules.ts';
+import { addDays, weekday } from '../dates.js';
+import type { IsoDate } from '../types.js';
+import { PAYMENT_LAG_DAYS, PAY_WEEK_START_WEEKDAY } from './rules.js';
 
 export interface PayWeek {
   /** Jueves en que arranca el periodo. */

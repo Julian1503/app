@@ -1,8 +1,8 @@
 /** Payslips ya parseados. Los PDF originales no se guardan: viven en el disco
  *  de quien corre `npm run payslips:import`, que es el unico que los lee. */
 
-import type { BackPay, Payslip, PayslipLine } from '../../shared/types.ts';
-import { assertOk, db, unwrap } from './client.ts';
+import type { BackPay, Payslip, PayslipLine } from '../../shared/types.js';
+import { assertOk, db, unwrap } from './client.js';
 
 interface PayslipRow {
   file: string;

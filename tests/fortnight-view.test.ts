@@ -3,9 +3,9 @@
 
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import type { Fortnight } from '../shared/types.ts';
-import { createI18n } from '../shared/i18n/index.ts';
-import { headlineFor, labelFor, positionOf, verdictFor } from '../src/lib/fortnight-view.ts';
+import type { Fortnight } from '../shared/types.js';
+import { createI18n } from '../shared/i18n/index.js';
+import { headlineFor, labelFor, positionOf, verdictFor } from '../src/lib/fortnight-view.js';
 
 const { t } = createI18n('es');
 

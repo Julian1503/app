@@ -2,7 +2,7 @@
  *  Lee el disco, no la base: sirve para probar cambios en parse.ts antes de
  *  importarlos. Uso: npm run payslips:check */
 
-import { parsePayslipsFromDisk } from '../server/payslips/import.ts';
+import { parsePayslipsFromDisk } from '../server/payslips/import.js';
 
 const result = await parsePayslipsFromDisk();
 

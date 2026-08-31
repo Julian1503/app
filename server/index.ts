@@ -4,8 +4,8 @@
  *  defecto en 127.0.0.1: mientras no haya login, el loopback es lo unico que
  *  separa tus sueldos y los reportes de salud de cualquiera en la red. */
 
-import { config, hasDatabase, hasOAuthCredentials, isPubliclyReachable } from './config.ts';
-import { createApp } from './app.ts';
+import { config, hasDatabase, hasOAuthCredentials, isPubliclyReachable } from './config.js';
+import { createApp } from './app.js';
 
 createApp().listen(config.port, config.host, () => {
   console.log(`[horas] API en ${config.apiOrigin}`);

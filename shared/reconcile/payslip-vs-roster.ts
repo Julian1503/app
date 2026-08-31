@@ -1,9 +1,9 @@
 /** Cruce entre lo que dice el roster y lo que efectivamente pago el payslip. */
 
-import { addDays, rangeDays } from '../dates.ts';
-import type { I18n } from '../i18n/index.ts';
-import type { DailyHours, Finding, Payslip, Shift } from '../types.ts';
-import { aggregateDaily } from '../visa/shift-hours.ts';
+import { addDays, rangeDays } from '../dates.js';
+import type { I18n } from '../i18n/index.js';
+import type { DailyHours, Finding, Payslip, Shift } from '../types.js';
+import { aggregateDaily } from '../visa/shift-hours.js';
 
 function sumSleepovers(daily: readonly DailyHours[], from: string, to: string): number {
   return daily

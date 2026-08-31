@@ -4,8 +4,8 @@
  *  siguen cargando a mano (ahora desde el table editor de Supabase) porque los
  *  regionales cambian de fecha todos los años; los recesos los edita la UI. */
 
-import type { TermBreak } from '../../shared/visa/fortnights.ts';
-import { assertOk, db, unwrap } from './client.ts';
+import type { TermBreak } from '../../shared/visa/fortnights.js';
+import { assertOk, db, unwrap } from './client.js';
 
 export interface Holiday {
   readonly date: string;

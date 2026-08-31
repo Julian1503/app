@@ -3,7 +3,7 @@
  *  Se separa del servidor porque es la regla que decide que aparece en la
  *  pantalla, y conviene poder testearla sin Deputy del otro lado. */
 
-import type { IsoDate, Shift } from '../types.ts';
+import type { IsoDate, Shift } from '../types.js';
 
 export interface SelectOptions {
   /** Nombre del cliente tal como figura en el location de Deputy. */

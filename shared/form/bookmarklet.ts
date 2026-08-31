@@ -10,8 +10,8 @@
  *  Submit lo apretas vos despues de revisar. Un test verifica que el codigo no
  *  toque el boton de envio. */
 
-import { findField } from './schema.ts';
-import { usableAnswers, type FieldAnswer } from './answers.ts';
+import { findField } from './schema.js';
+import { usableAnswers, type FieldAnswer } from './answers.js';
 
 /** Hosts del formulario. El marcador se niega a correr en cualquier otro lado,
  *  para no volcar datos de Josh en una pagina que no es la suya. */

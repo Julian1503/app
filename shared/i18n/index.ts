@@ -8,9 +8,9 @@
  *  costaria mas de lo que rinde. El cliente vuelve a pedir `/api/report` cuando
  *  cambia de idioma. */
 
-import type { IsoDate } from '../types.ts';
-import { en } from './en.ts';
-import { es, type Messages } from './es.ts';
+import type { IsoDate } from '../types.js';
+import { en } from './en.js';
+import { es, type Messages } from './es.js';
 
 export type Locale = 'es' | 'en';
 

@@ -18,8 +18,8 @@
  *  asi que se parsea con tolerancia y se informa lo que no se pudo imputar en
  *  vez de descartarlo en silencio. */
 
-import type { BackPay, BackPayAllocation, IsoDate } from '../../shared/types.ts';
-import type { TextRow } from './pdf-text.ts';
+import type { BackPay, BackPayAllocation, IsoDate } from '../../shared/types.js';
+import type { TextRow } from './pdf-text.js';
 
 const MESSAGES_HEADER = /^MESSAGES\b/i;
 const BREAKDOWN_HEADER = /back\s*pay\s+is\s+broken\s+down/i;

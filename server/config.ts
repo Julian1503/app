@@ -4,8 +4,8 @@
 import 'dotenv/config';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { DEFAULT_FORTNIGHT_LIMIT, DEFAULT_KM_RATE } from '../shared/visa/rules.ts';
-import { normalizeEndpoint } from './deputy/endpoint.ts';
+import { DEFAULT_FORTNIGHT_LIMIT, DEFAULT_KM_RATE } from '../shared/visa/rules.js';
+import { normalizeEndpoint } from './deputy/endpoint.js';
 
 const APP_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 

@@ -7,4 +7,4 @@
  *  semana donde la app no lo esperaba y el hallazgo `holiday-missing` avisa
  *  cual agregar. */
 
-export { type Holiday, readHolidays } from './db/calendar.ts';
+export { type Holiday, readHolidays } from './db/calendar.js';

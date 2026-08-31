@@ -3,7 +3,7 @@
  *  Cada respuesta sabe de donde salio, y eso decide si puede usarse. Un valor
  *  sin procedencia no existe: el hueco se pregunta, no se completa. */
 
-import { findField, type FormField } from './schema.ts';
+import { findField, type FormField } from './schema.js';
 
 export type AnswerStatus =
   /** Sale de la nota de Deputy o del registro del turno. */

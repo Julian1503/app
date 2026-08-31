@@ -1,12 +1,12 @@
 /** Armado del panel de plata: que semanas mostrar y cual es el proximo deposito. */
 
-import { addDays } from '../dates.ts';
-import type { IsoDate, PayForecast, PaySummary, Payslip, Shift } from '../types.ts';
-import { financialYearOf, payWeeksBetween } from './calendar.ts';
-import { forecastWeek } from './forecast.ts';
-import { buildRateTimeline, rateCardFor } from './rates.ts';
-import { creditsByWeek, summariseBackPay } from './settlement.ts';
-import { taxTableYearFor } from './tax.ts';
+import { addDays } from '../dates.js';
+import type { IsoDate, PayForecast, PaySummary, Payslip, Shift } from '../types.js';
+import { financialYearOf, payWeeksBetween } from './calendar.js';
+import { forecastWeek } from './forecast.js';
+import { buildRateTimeline, rateCardFor } from './rates.js';
+import { creditsByWeek, summariseBackPay } from './settlement.js';
+import { taxTableYearFor } from './tax.js';
 
 /** Piso de historial cuando todavia no hay payslips cargados. */
 const MIN_WEEKS_BACK = 8;

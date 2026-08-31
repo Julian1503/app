@@ -1,10 +1,10 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import type { Payslip, Shift } from '../shared/types.ts';
-import { createI18n } from '../shared/i18n/index.ts';
-import { analyseSpans, checkBrokenShifts } from '../shared/reconcile/broken-shift.ts';
-import { extractKm, reconcileKm } from '../shared/reconcile/km.ts';
-import { checkPaidHours } from '../shared/reconcile/payslip-vs-roster.ts';
+import type { Payslip, Shift } from '../shared/types.js';
+import { createI18n } from '../shared/i18n/index.js';
+import { analyseSpans, checkBrokenShifts } from '../shared/reconcile/broken-shift.js';
+import { extractKm, reconcileKm } from '../shared/reconcile/km.js';
+import { checkPaidHours } from '../shared/reconcile/payslip-vs-roster.js';
 
 const I18N = createI18n('es');
 

@@ -7,11 +7,11 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { config } from '../config.ts';
-import type { Payslip } from '../../shared/types.ts';
-import type { PayslipLoadResult } from './load.ts';
-import { extractPages } from './pdf-text.ts';
-import { parsePayslipPages } from './parse.ts';
+import { config } from '../config.js';
+import type { Payslip } from '../../shared/types.js';
+import type { PayslipLoadResult } from './load.js';
+import { extractPages } from './pdf-text.js';
+import { parsePayslipPages } from './parse.js';
 
 async function listPdfs(directory: string): Promise<string[]> {
   const entries = await fs.readdir(directory, { withFileTypes: true });

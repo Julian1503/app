@@ -18,9 +18,9 @@
  *  linea y `suma de importes = Total Earnings`. Si alguna no cierra, el payslip
  *  queda marcado y aparece como hallazgo. */
 
-import type { Payslip, PayslipLine, PayslipLineKind } from '../../shared/types.ts';
-import { readBackPay } from './back-pay.ts';
-import type { PdfPage, TextRow } from './pdf-text.ts';
+import type { Payslip, PayslipLine, PayslipLineKind } from '../../shared/types.js';
+import { readBackPay } from './back-pay.js';
+import type { PdfPage, TextRow } from './pdf-text.js';
 
 const MONEY_TOLERANCE = 0.02;
 

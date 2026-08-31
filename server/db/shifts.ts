@@ -1,7 +1,7 @@
 /** Turnos sincronizados desde Deputy y estado del ultimo sync. */
 
-import type { Shift, ShiftSource } from '../../shared/types.ts';
-import { assertOk, db, unwrap } from './client.ts';
+import type { Shift, ShiftSource } from '../../shared/types.js';
+import { assertOk, db, unwrap } from './client.js';
 
 export interface SyncState {
   readonly shifts: Shift[];

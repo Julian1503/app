@@ -4,7 +4,7 @@
  *  timeouts y el tipado de la respuesta. */
 
 import Anthropic from '@anthropic-ai/sdk';
-import { config } from '../config.ts';
+import { config } from '../config.js';
 
 export class MissingApiKeyError extends Error {
   constructor(message: string) {

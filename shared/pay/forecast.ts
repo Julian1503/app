@@ -5,7 +5,7 @@
  *  totales. Cuando el payslip llega, la estimacion no se descarta: queda al lado
  *  y la diferencia se vuelve un hallazgo. */
 
-import { roundHours } from '../dates.ts';
+import { roundHours } from '../dates.js';
 import type {
   ForecastBasis,
   ForecastLine,
@@ -15,13 +15,13 @@ import type {
   Payslip,
   RateCard,
   Shift,
-} from '../types.ts';
-import { aggregateDaily } from '../visa/shift-hours.ts';
-import type { PayWeek } from './calendar.ts';
-import { breakdownWeek } from './classify.ts';
-import { BROKEN_SHIFT_PAID_FROM, OVERTIME_MULTIPLIER, SUPER_RATE } from './rules.ts';
-import { type BackPayCredit, settle } from './settlement.ts';
-import { weeklyWithholding } from './tax.ts';
+} from '../types.js';
+import { aggregateDaily } from '../visa/shift-hours.js';
+import type { PayWeek } from './calendar.js';
+import { breakdownWeek } from './classify.js';
+import { BROKEN_SHIFT_PAID_FROM, OVERTIME_MULTIPLIER, SUPER_RATE } from './rules.js';
+import { type BackPayCredit, settle } from './settlement.js';
+import { weeklyWithholding } from './tax.js';
 
 const money = (value: number): number => Math.round(value * 100) / 100;
 

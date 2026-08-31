@@ -9,8 +9,8 @@
  *  que consiga registrarse en el proyecto de Supabase entraria. */
 
 import type { RequestHandler } from 'express';
-import { config } from './config.ts';
-import { db } from './db/client.ts';
+import { config } from './config.js';
+import { db } from './db/client.js';
 
 /** Deputy vuelve de su login por redirect del navegador, sin forma de mandar un
  *  header. Esa ruta se protege con el `state` de OAuth, no con el JWT. */

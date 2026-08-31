@@ -8,7 +8,7 @@ import {
   mergeShifts,
   rostersFromRecords,
   timesheetsFromRecords,
-} from '../server/deputy/shifts.ts';
+} from '../server/deputy/shifts.js';
 
 /** 2025-11-27 15:00-19:00 en Queensland (UTC+10). */
 const TIMESHEET = {

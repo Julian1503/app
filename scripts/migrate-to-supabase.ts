@@ -8,10 +8,10 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { config } from '../server/config.ts';
-import { assertOk, db } from '../server/db/client.ts';
-import type { ShiftReport } from '../shared/reports/types.ts';
-import type { Shift } from '../shared/types.ts';
+import { config } from '../server/config.js';
+import { assertOk, db } from '../server/db/client.js';
+import type { ShiftReport } from '../shared/reports/types.js';
+import type { Shift } from '../shared/types.js';
 
 const DATA_DIR = path.resolve(config.appRoot, 'data');
 

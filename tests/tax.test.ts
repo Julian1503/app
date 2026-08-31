@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { financialYearOf, payWeekOf, payWeeksBetween, startOfPayWeek } from '../shared/pay/calendar.ts';
-import { isTaxTableStale, weeklyWithholding } from '../shared/pay/tax.ts';
+import { financialYearOf, payWeekOf, payWeeksBetween, startOfPayWeek } from '../shared/pay/calendar.js';
+import { isTaxTableStale, weeklyWithholding } from '../shared/pay/tax.js';
 
 test('la semana de pago va de jueves a miercoles y se cobra el jueves siguiente', () => {
   // Periodo real del payslip del 6 al 12 de agosto de 2026, pagado el 13.

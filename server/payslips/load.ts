@@ -3,8 +3,8 @@
  *  Es todo lo que el servidor necesita. El parseo de los PDF vive en
  *  `import.ts`, que arrastra pdfjs-dist y solo usa el importador. */
 
-import { readPayslips } from '../db/payslips.ts';
-import type { Payslip } from '../../shared/types.ts';
+import { readPayslips } from '../db/payslips.js';
+import type { Payslip } from '../../shared/types.js';
 
 export interface PayslipLoadResult {
   readonly payslips: Payslip[];

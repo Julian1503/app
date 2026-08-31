@@ -3,13 +3,13 @@
  *  La persistencia vive en server/db/reports.ts; aca se reexporta para no
  *  tocar los llamadores. */
 
-import { isBehaviourId } from '../../shared/reports/behaviours.ts';
-import type { AnswerStatus, FieldAnswer, Gap } from '../../shared/form/answers.ts';
-import { isFieldId } from '../../shared/form/schema.ts';
-import { isTagId } from '../../shared/reports/tags.ts';
-import type { Observation, ReportStatus, ShiftReport } from '../../shared/reports/types.ts';
+import { isBehaviourId } from '../../shared/reports/behaviours.js';
+import type { AnswerStatus, FieldAnswer, Gap } from '../../shared/form/answers.js';
+import { isFieldId } from '../../shared/form/schema.js';
+import { isTagId } from '../../shared/reports/tags.js';
+import type { Observation, ReportStatus, ShiftReport } from '../../shared/reports/types.js';
 
-export { readReport, readReports, writeReport } from '../db/reports.ts';
+export { readReport, readReports, writeReport } from '../db/reports.js';
 
 const STATUSES: readonly ReportStatus[] = ['pending', 'drafted', 'submitted'];
 

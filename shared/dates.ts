@@ -2,7 +2,7 @@
  *  para evitar que el huso horario del navegador corra los dias.
  *  Queensland no tiene horario de verano, asi que no hace falta nada mas. */
 
-import type { IsoDate } from './types.ts';
+import type { IsoDate } from './types.js';
 
 const MS_PER_DAY = 86_400_000;
 

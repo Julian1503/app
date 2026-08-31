@@ -17,10 +17,10 @@
  *  cierran son diferencias reales entre roster y payslip, no fallas de la
  *  regla: turnos que faltan en Deputy o categorias mal liquidadas. */
 
-import { addDays, roundHours, weekday } from '../dates.ts';
-import type { IsoDate, PayCategory, Shift } from '../types.ts';
-import { NIGHT_END_MINUTE, NIGHT_START_MINUTE, SLEEPOVER_MIN_NIGHT_HOURS } from '../visa/rules.ts';
-import { EVENING_START_MINUTE, MAX_CONTINUOUS_PAID_HOURS } from './rules.ts';
+import { addDays, roundHours, weekday } from '../dates.js';
+import type { IsoDate, PayCategory, Shift } from '../types.js';
+import { NIGHT_END_MINUTE, NIGHT_START_MINUTE, SLEEPOVER_MIN_NIGHT_HOURS } from '../visa/rules.js';
+import { EVENING_START_MINUTE, MAX_CONTINUOUS_PAID_HOURS } from './rules.js';
 
 const MINUTES_PER_DAY = 1440;
 

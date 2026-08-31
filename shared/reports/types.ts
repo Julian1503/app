@@ -1,7 +1,7 @@
 /** Tipos del reporte por turno. */
 
-import type { FieldAnswer, Gap } from '../form/answers.ts';
-import type { IsoDate, Shift } from '../types.ts';
+import type { FieldAnswer, Gap } from '../form/answers.js';
+import type { IsoDate, Shift } from '../types.js';
 
 /** Una conducta observada, con su medida y la nota de lo que efectivamente paso. */
 export interface Observation {

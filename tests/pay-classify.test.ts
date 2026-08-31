@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { breakdownWeek, payableHours } from '../shared/pay/classify.ts';
-import { payWeekOf } from '../shared/pay/calendar.ts';
-import { forecastWeek } from '../shared/pay/forecast.ts';
-import type { RateCard, Shift } from '../shared/types.ts';
+import { breakdownWeek, payableHours } from '../shared/pay/classify.js';
+import { payWeekOf } from '../shared/pay/calendar.js';
+import { forecastWeek } from '../shared/pay/forecast.js';
+import type { RateCard, Shift } from '../shared/types.js';
 
 /** Turnos con la forma de los reales: `end` puede pasar de 1440 si cruza medianoche. */
 function shift(date: string, start: number, end: number, id = `${date}-${start}`): Shift {

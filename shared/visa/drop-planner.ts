@@ -8,11 +8,11 @@
  *  excedidas y, a igualdad, el que libera mas horas. Recalcula despues de cada
  *  eleccion porque sacar un turno mueve todas las ventanas que lo contienen. */
 
-import { formatMinute } from '../dates.ts';
-import type { DropSuggestion, Fortnight, Shift } from '../types.ts';
-import type { TermBreak } from './fortnights.ts';
-import { buildFortnights } from './fortnights.ts';
-import { aggregateDaily, countableHoursOf } from './shift-hours.ts';
+import { formatMinute } from '../dates.js';
+import type { DropSuggestion, Fortnight, Shift } from '../types.js';
+import type { TermBreak } from './fortnights.js';
+import { buildFortnights } from './fortnights.js';
+import { aggregateDaily, countableHoursOf } from './shift-hours.js';
 
 const MAX_SUGGESTIONS = 12;
 

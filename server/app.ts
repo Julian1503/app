@@ -4,13 +4,13 @@
  *  puede escuchar un puerto y exporta la app como handler. */
 
 import express from 'express';
-import { requireUser } from './auth.ts';
-import { config } from './config.ts';
-import { NotAuthenticatedError } from './deputy/client.ts';
-import { analysisRouter } from './routes/analysis.ts';
-import { authRouter } from './routes/auth.ts';
-import { reportsRouter } from './routes/reports.ts';
-import { syncRouter } from './routes/sync.ts';
+import { requireUser } from './auth.js';
+import { config } from './config.js';
+import { NotAuthenticatedError } from './deputy/client.js';
+import { analysisRouter } from './routes/analysis.js';
+import { authRouter } from './routes/auth.js';
+import { reportsRouter } from './routes/reports.js';
+import { syncRouter } from './routes/sync.js';
 
 export function createApp(): express.Express {
   const app = express();

@@ -1,21 +1,21 @@
 /** Sincronizacion de turnos desde Deputy hacia la base. */
 
 import { Router } from 'express';
-import { config } from '../config.ts';
-import { fetchIdentity } from '../deputy/client.ts';
-import { fetchRosters, fetchTimesheets, mergeShifts } from '../deputy/shifts.ts';
-import { readShifts, writeShifts } from '../db/shifts.ts';
-import { addDays } from '../../shared/dates.ts';
-import { createI18n, resolveLocale } from '../../shared/i18n/index.ts';
-import type { Shift } from '../../shared/types.ts';
+import { config } from '../config.js';
+import { fetchIdentity } from '../deputy/client.js';
+import { fetchRosters, fetchTimesheets, mergeShifts } from '../deputy/shifts.js';
+import { readShifts, writeShifts } from '../db/shifts.js';
+import { addDays } from '../../shared/dates.js';
+import { createI18n, resolveLocale } from '../../shared/i18n/index.js';
+import type { Shift } from '../../shared/types.js';
 
 export const syncRouter = Router();
 
 const DEFAULT_HISTORY_START = '2025-11-01';
 const FUTURE_HORIZON_DAYS = 120;
 
-export type { SyncState } from '../db/shifts.ts';
-export { readShifts } from '../db/shifts.ts';
+export type { SyncState } from '../db/shifts.js';
+export { readShifts } from '../db/shifts.js';
 
 function isIsoDate(value: unknown): value is string {
   return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value);

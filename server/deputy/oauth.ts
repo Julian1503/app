@@ -8,10 +8,10 @@
  *  cada canje invalida el anterior, asi que hay que guardar siempre el nuevo. */
 
 import crypto from 'node:crypto';
-import { config } from '../config.ts';
-import { purgeExpiredStates, rememberState } from '../db/oauth-states.ts';
-import { saveTokens, type TokenSet } from '../store/tokens.ts';
-import { normalizeEndpoint } from './endpoint.ts';
+import { config } from '../config.js';
+import { purgeExpiredStates, rememberState } from '../db/oauth-states.js';
+import { saveTokens, type TokenSet } from '../store/tokens.js';
+import { normalizeEndpoint } from './endpoint.js';
 
 const AUTHORIZE_URL = 'https://once.deputy.com/my/oauth/login';
 const TOKEN_URL = 'https://once.deputy.com/my/oauth/access_token';

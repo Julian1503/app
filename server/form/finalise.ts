@@ -7,10 +7,10 @@
 
 import { z } from 'zod';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
-import { type FieldAnswer, usableAnswers } from '../../shared/form/answers.ts';
-import { FORM_FIELDS, findField } from '../../shared/form/schema.ts';
-import { config } from '../config.ts';
-import { getClient } from '../reports/claude.ts';
+import { type FieldAnswer, usableAnswers } from '../../shared/form/answers.js';
+import { FORM_FIELDS, findField } from '../../shared/form/schema.js';
+import { config } from '../config.js';
+import { getClient } from '../reports/claude.js';
 
 const NEWLINE = String.fromCharCode(10);
 

@@ -6,15 +6,15 @@
 
 import { z } from 'zod';
 import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
-import { formatMinute } from '../../shared/dates.ts';
-import type { FieldAnswer, Gap } from '../../shared/form/answers.ts';
-import { FORM_FIELDS, findField, slotForShift } from '../../shared/form/schema.ts';
-import { findBehaviour } from '../../shared/reports/behaviours.ts';
-import { findTag } from '../../shared/reports/tags.ts';
-import type { ShiftReport } from '../../shared/reports/types.ts';
-import type { Shift } from '../../shared/types.ts';
-import { config } from '../config.ts';
-import { getClient } from './../reports/claude.ts';
+import { formatMinute } from '../../shared/dates.js';
+import type { FieldAnswer, Gap } from '../../shared/form/answers.js';
+import { FORM_FIELDS, findField, slotForShift } from '../../shared/form/schema.js';
+import { findBehaviour } from '../../shared/reports/behaviours.js';
+import { findTag } from '../../shared/reports/tags.js';
+import type { ShiftReport } from '../../shared/reports/types.js';
+import type { Shift } from '../../shared/types.js';
+import { config } from '../config.js';
+import { getClient } from './../reports/claude.js';
 
 const NEWLINE = String.fromCharCode(10);
 const MAX_GAPS = 8;

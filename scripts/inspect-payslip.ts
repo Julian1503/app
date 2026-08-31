@@ -2,8 +2,8 @@
  *  Uso: npx tsx scripts/inspect-payslip.ts "../payslips/06 aug - 12 aug.pdf" */
 
 import fs from 'node:fs/promises';
-import { extractPages } from '../server/payslips/pdf-text.ts';
-import { parsePayslipPages } from '../server/payslips/parse.ts';
+import { extractPages } from '../server/payslips/pdf-text.js';
+import { parsePayslipPages } from '../server/payslips/parse.js';
 
 async function main(): Promise<void> {
   const file = process.argv[2];

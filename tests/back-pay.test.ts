@@ -6,14 +6,14 @@
 
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { parseAllocation, readBackPay } from '../server/payslips/back-pay.ts';
-import type { TextRow } from '../server/payslips/pdf-text.ts';
-import { createI18n } from '../shared/i18n/index.ts';
-import { payWeekOf } from '../shared/pay/calendar.ts';
-import { checkForecastAgainstPayslips } from '../shared/pay/findings.ts';
-import { forecastWeek } from '../shared/pay/forecast.ts';
-import { creditsByWeek, settle, summariseBackPay } from '../shared/pay/settlement.ts';
-import { FALLBACK_RATES } from '../shared/pay/rules.ts';
+import { parseAllocation, readBackPay } from '../server/payslips/back-pay.js';
+import type { TextRow } from '../server/payslips/pdf-text.js';
+import { createI18n } from '../shared/i18n/index.js';
+import { payWeekOf } from '../shared/pay/calendar.js';
+import { checkForecastAgainstPayslips } from '../shared/pay/findings.js';
+import { forecastWeek } from '../shared/pay/forecast.js';
+import { creditsByWeek, settle, summariseBackPay } from '../shared/pay/settlement.js';
+import { FALLBACK_RATES } from '../shared/pay/rules.js';
 import type {
   BackPayAllocation,
   IsoDate,
@@ -21,7 +21,7 @@ import type {
   Payslip,
   RateCard,
   Settlement,
-} from '../shared/types.ts';
+} from '../shared/types.js';
 
 const I18N = createI18n('es');
 

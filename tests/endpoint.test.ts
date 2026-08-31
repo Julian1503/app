@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { normalizeEndpoint } from '../server/deputy/endpoint.ts';
+import { normalizeEndpoint } from '../server/deputy/endpoint.js';
 
 test('le agrega https al host pelado que devuelve Deputy', () => {
   assert.equal(

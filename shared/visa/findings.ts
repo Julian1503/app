@@ -1,8 +1,8 @@
 /** Hallazgos relativos a la condicion 8105. */
 
-import { roundHours } from '../dates.ts';
-import type { I18n } from '../i18n/index.ts';
-import type { Finding, Fortnight } from '../types.ts';
+import { roundHours } from '../dates.js';
+import type { I18n } from '../i18n/index.js';
+import type { Finding, Fortnight } from '../types.js';
 
 export function checkFortnights(
   fortnights: readonly Fortnight[],

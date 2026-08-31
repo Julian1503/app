@@ -1,10 +1,10 @@
 /** Cliente HTTP autenticado contra el install de Deputy.
  *  Renueva el access token solo cuando esta por vencer. */
 
-import { config } from '../config.ts';
-import { clearTokens, loadTokens, type TokenSet } from '../store/tokens.ts';
-import { normalizeEndpoint } from './endpoint.ts';
-import { isExpired, refreshTokens } from './oauth.ts';
+import { config } from '../config.js';
+import { clearTokens, loadTokens, type TokenSet } from '../store/tokens.js';
+import { normalizeEndpoint } from './endpoint.js';
+import { isExpired, refreshTokens } from './oauth.js';
 
 export class NotAuthenticatedError extends Error {
   constructor(message = 'No hay sesion de Deputy. Entra desde la app para autorizarla.') {

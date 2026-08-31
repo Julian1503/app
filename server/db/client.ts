@@ -6,7 +6,7 @@
  *  login, esta key se reemplaza por el JWT del usuario y RLS pasa a decidir. */
 
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-import { config } from '../config.ts';
+import { config } from '../config.js';
 
 let cached: SupabaseClient | null = null;
 

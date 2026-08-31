@@ -6,32 +6,32 @@ import {
   renderForForm,
   usableAnswers,
   type FieldAnswer,
-} from '../shared/form/answers.ts';
+} from '../shared/form/answers.js';
 import {
   EXCLUDED_OPTIONS,
   FORM_FIELDS,
   findField,
   slotForShift,
-} from '../shared/form/schema.ts';
-import { BEHAVIOURS, EXCLUDED_BEHAVIOURS, isBehaviourId } from '../shared/reports/behaviours.ts';
-import { matchesClient, selectClientShifts } from '../shared/reports/select.ts';
-import { PRESENTATION_TAGS, isTagId } from '../shared/reports/tags.ts';
-import { emptyReport, hasMaterial } from '../shared/reports/types.ts';
-import type { Shift } from '../shared/types.ts';
+} from '../shared/form/schema.js';
+import { BEHAVIOURS, EXCLUDED_BEHAVIOURS, isBehaviourId } from '../shared/reports/behaviours.js';
+import { matchesClient, selectClientShifts } from '../shared/reports/select.js';
+import { PRESENTATION_TAGS, isTagId } from '../shared/reports/tags.js';
+import { emptyReport, hasMaterial } from '../shared/reports/types.js';
+import type { Shift } from '../shared/types.js';
 import {
   bookmarkletSource,
   buildBookmarklet,
   fillAnswers,
-} from '../shared/form/bookmarklet.ts';
-import { EXTRACT_SYSTEM } from '../server/form/extract.ts';
-import { FINALISE_SYSTEM } from '../server/form/finalise.ts';
+} from '../shared/form/bookmarklet.js';
+import { EXTRACT_SYSTEM } from '../server/form/extract.js';
+import { FINALISE_SYSTEM } from '../server/form/finalise.js';
 import {
   parseFormAnswers,
   parseGaps,
   parseObservations,
   parseStatus,
   parseTags,
-} from '../server/reports/store.ts';
+} from '../server/reports/store.js';
 
 function shift(date: string, area: string | null, overrides: Partial<Shift> = {}): Shift {
   return {

@@ -9,11 +9,11 @@
  *    hallazgo de datos: no hay que reclamarle nada a nadie, hay que actualizar
  *    la herramienta. */
 
-import type { I18n } from '../i18n/index.ts';
-import type { Finding, PayForecast, Payslip, PayslipLineKind, Shift } from '../types.ts';
-import { SUPER_RATE } from './rules.ts';
-import { PAY_TOLERANCE } from './settlement.ts';
-import { isTaxTableStale, weeklyWithholding } from './tax.ts';
+import type { I18n } from '../i18n/index.js';
+import type { Finding, PayForecast, Payslip, PayslipLineKind, Shift } from '../types.js';
+import { SUPER_RATE } from './rules.js';
+import { PAY_TOLERANCE } from './settlement.js';
+import { isTaxTableStale, weeklyWithholding } from './tax.js';
 
 /** Debajo de esto es redondeo de la nomina, no un error. */
 const MONEY_TOLERANCE = PAY_TOLERANCE;

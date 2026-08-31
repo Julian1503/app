@@ -6,7 +6,7 @@
  *  form (Sleepover Allowance, Broken Shift Allowance, PAYG, super) rather than
  *  being translated into something a manager would not recognise. */
 
-import type { Messages } from './es.ts';
+import type { Messages } from './es.js';
 
 export const en: Messages = {
   // --- App shell ---

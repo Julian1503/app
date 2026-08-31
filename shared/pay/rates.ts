@@ -8,8 +8,8 @@
  *  Ejemplo real: hasta el 30 de junio de 2026 la hora ordinaria valia $32.88 y
  *  desde el 1 de julio $34.44. */
 
-import type { IsoDate, PayCategory, Payslip, RateCard } from '../types.ts';
-import { FALLBACK_RATES } from './rules.ts';
+import type { IsoDate, PayCategory, Payslip, RateCard } from '../types.js';
+import { FALLBACK_RATES } from './rules.js';
 
 const HOURLY_LABELS: ReadonlyArray<readonly [RegExp, PayCategory]> = [
   [/^Ordinary Hours/i, 'ordinary'],

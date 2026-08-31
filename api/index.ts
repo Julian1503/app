@@ -19,7 +19,7 @@ let cached: Handler | null = null;
 export default async function handler(req: IncomingMessage, res: ServerResponse): Promise<void> {
   if (!cached) {
     try {
-      const { createApp } = await import('../server/app.ts');
+      const { createApp } = await import('../server/app.js');
       cached = createApp() as unknown as Handler;
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);

@@ -10,13 +10,13 @@
  *    06:00-09:00  ->  3 h el mismo dia
  */
 
-import { addDays, roundHours } from '../dates.ts';
-import type { DailyHours, IsoDate, Shift } from '../types.ts';
+import { addDays, roundHours } from '../dates.js';
+import type { DailyHours, IsoDate, Shift } from '../types.js';
 import {
   NIGHT_END_MINUTE,
   NIGHT_START_MINUTE,
   SLEEPOVER_MIN_NIGHT_HOURS,
-} from './rules.ts';
+} from './rules.js';
 
 const MINUTES_PER_DAY = 1440;
 

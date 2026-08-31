@@ -8,9 +8,9 @@
  *  version localizada. Se prefiere la localizada; si no viene, se aplica el
  *  offset de Queensland, que no tiene horario de verano. */
 
-import { extractKm } from '../../shared/reconcile/km.ts';
-import type { Shift } from '../../shared/types.ts';
-import { deputyFetch } from './client.ts';
+import { extractKm } from '../../shared/reconcile/km.js';
+import type { Shift } from '../../shared/types.js';
+import { deputyFetch } from './client.js';
 
 /** Queensland: UTC+10 todo el año. */
 const QLD_OFFSET_MINUTES = 600;

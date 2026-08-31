@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import type { DailyHours, Shift } from '../shared/types.ts';
-import { buildFortnights, currentFortnight } from '../shared/visa/fortnights.ts';
-import { planDrops } from '../shared/visa/drop-planner.ts';
+import type { DailyHours, Shift } from '../shared/types.js';
+import { buildFortnights, currentFortnight } from '../shared/visa/fortnights.js';
+import { planDrops } from '../shared/visa/drop-planner.js';
 
 function day(date: string, countable: number, sleepovers = 0): DailyHours {
   return { date, countable, gross: countable, sleepovers, shiftIds: [date] };

@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { payWeekOf } from '../shared/pay/calendar.ts';
-import { createI18n } from '../shared/i18n/index.ts';
+import { payWeekOf } from '../shared/pay/calendar.js';
+import { createI18n } from '../shared/i18n/index.js';
 import {
   checkForecastAgainstPayslips,
   checkForecastLines,
   checkHolidayCalendar,
   checkPayrollModel,
-} from '../shared/pay/findings.ts';
-import { forecastWeek } from '../shared/pay/forecast.ts';
-import { buildRateTimeline, rateCardFor } from '../shared/pay/rates.ts';
-import type { Payslip, PayslipLine, RateCard, Shift } from '../shared/types.ts';
+} from '../shared/pay/findings.js';
+import { forecastWeek } from '../shared/pay/forecast.js';
+import { buildRateTimeline, rateCardFor } from '../shared/pay/rates.js';
+import type { Payslip, PayslipLine, RateCard, Shift } from '../shared/types.js';
 
 function shift(date: string, start: number, end: number): Shift {
   return {

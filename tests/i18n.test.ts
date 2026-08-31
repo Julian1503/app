@@ -4,9 +4,9 @@
 
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { en } from '../shared/i18n/en.ts';
-import { es } from '../shared/i18n/es.ts';
-import { createI18n, LOCALES, resolveLocale } from '../shared/i18n/index.ts';
+import { en } from '../shared/i18n/en.js';
+import { es } from '../shared/i18n/es.js';
+import { createI18n, LOCALES, resolveLocale } from '../shared/i18n/index.js';
 
 /** Parametros de relleno con los que renderizar cualquier entrada. Las claves
  *  que no correspondan se ignoran, asi que un unico objeto sirve para todas. */

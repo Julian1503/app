@@ -4,7 +4,7 @@
  *  la clave se deriva del DEPUTY_CLIENT_SECRET, que vive en el .env y no en la
  *  base. Un dump de Supabase por si solo no descifra nada. */
 
-import { assertOk, db } from './client.ts';
+import { assertOk, db } from './client.js';
 
 export interface EncryptedEnvelope {
   readonly v: 1;

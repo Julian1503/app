@@ -11,7 +11,7 @@
  *  se acredita a la semana que le correspondia, usando el desglose del payslip.
  *  Lo que el desglose no explica no se reparte a ojo, queda sin imputar. */
 
-import { startOfPayWeek } from './calendar.ts';
+import { startOfPayWeek } from './calendar.js';
 import type {
   BackPayRollup,
   IsoDate,
@@ -19,7 +19,7 @@ import type {
   Payslip,
   Settlement,
   SettlementStatus,
-} from '../types.ts';
+} from '../types.js';
 
 /** Debajo de esto es redondeo de la nomina, no un faltante. */
 export const PAY_TOLERANCE = 1;

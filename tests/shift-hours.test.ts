@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import type { Shift } from '../shared/types.ts';
-import { aggregateDaily, countableHoursOf, splitShiftByDay } from '../shared/visa/shift-hours.ts';
+import type { Shift } from '../shared/types.js';
+import { aggregateDaily, countableHoursOf, splitShiftByDay } from '../shared/visa/shift-hours.js';
 
 function shift(date: string, start: number, end: number, id = `${date}-${start}`): Shift {
   return {

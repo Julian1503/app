@@ -1,12 +1,12 @@
 /** Rutas del flujo OAuth con Deputy. */
 
 import { Router } from 'express';
-import { config, hasOAuthCredentials } from '../config.ts';
-import { createAuthorizeUrl, exchangeCode } from '../deputy/oauth.ts';
-import { consumeState } from '../db/oauth-states.ts';
-import { fetchIdentity, isAuthenticated } from '../deputy/client.ts';
-import { clearTokens } from '../store/tokens.ts';
-import { createI18n, resolveLocale } from '../../shared/i18n/index.ts';
+import { config, hasOAuthCredentials } from '../config.js';
+import { createAuthorizeUrl, exchangeCode } from '../deputy/oauth.js';
+import { consumeState } from '../db/oauth-states.js';
+import { fetchIdentity, isAuthenticated } from '../deputy/client.js';
+import { clearTokens } from '../store/tokens.js';
+import { createI18n, resolveLocale } from '../../shared/i18n/index.js';
 
 export const authRouter = Router();
 

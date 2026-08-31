@@ -4,7 +4,7 @@
  *  Deputy y se exige de vuelta en el callback. Va a la base porque en
  *  serverless las dos mitades del flujo corren en instancias distintas. */
 
-import { assertOk, db } from './client.ts';
+import { assertOk, db } from './client.js';
 
 /** Un login a medias no deberia bloquear el proximo intento. */
 const TTL_MS = 10 * 60 * 1000;

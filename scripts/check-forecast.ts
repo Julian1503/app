@@ -4,15 +4,15 @@
  *  cambia como liquida, esto lo muestra antes de que la app diga un numero
  *  equivocado. Uso: `npm run forecast:check`. */
 
-import { config } from '../server/config.ts';
-import { readShifts } from '../server/db/shifts.ts';
-import { readHolidays } from '../server/holidays.ts';
-import { loadPayslips } from '../server/payslips/load.ts';
-import { payWeekOf } from '../shared/pay/calendar.ts';
-import { forecastWeek } from '../shared/pay/forecast.ts';
-import { buildRateTimeline, rateCardFor } from '../shared/pay/rates.ts';
-import { SUPER_RATE } from '../shared/pay/rules.ts';
-import { weeklyWithholding } from '../shared/pay/tax.ts';
+import { config } from '../server/config.js';
+import { readShifts } from '../server/db/shifts.js';
+import { readHolidays } from '../server/holidays.js';
+import { loadPayslips } from '../server/payslips/load.js';
+import { payWeekOf } from '../shared/pay/calendar.js';
+import { forecastWeek } from '../shared/pay/forecast.js';
+import { buildRateTimeline, rateCardFor } from '../shared/pay/rates.js';
+import { SUPER_RATE } from '../shared/pay/rules.js';
+import { weeklyWithholding } from '../shared/pay/tax.js';
 
 const pad = (value: string | number, width: number): string => String(value).padStart(width);
 const money = (value: number): string => `$${value.toFixed(2)}`;

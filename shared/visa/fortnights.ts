@@ -8,9 +8,9 @@
  *  Durante los term breaks del curso no hay tope, asi que esos dias se descuentan
  *  del conteo "en sesion", que es el que realmente importa. */
 
-import { addDays, roundHours, startOfWeek } from '../dates.ts';
-import type { DailyHours, Fortnight, IsoDate } from '../types.ts';
-import { NIGHT_BAND_HOURS, WARNING_RATIO } from './rules.ts';
+import { addDays, roundHours, startOfWeek } from '../dates.js';
+import type { DailyHours, Fortnight, IsoDate } from '../types.js';
+import { NIGHT_BAND_HOURS, WARNING_RATIO } from './rules.js';
 
 export interface TermBreak {
   readonly start: IsoDate;

@@ -1,13 +1,13 @@
 /** Reporte completo y edicion del calendario academico. */
 
 import { Router } from 'express';
-import { config } from '../config.ts';
-import { createI18n, resolveLocale } from '../../shared/i18n/index.ts';
-import { buildReport } from '../../shared/report.ts';
-import type { TermBreak } from '../../shared/visa/fortnights.ts';
-import { readHolidays, readTermBreaks, writeTermBreaks } from '../db/calendar.ts';
-import { loadPayslips } from '../payslips/load.ts';
-import { readShifts } from './sync.ts';
+import { config } from '../config.js';
+import { createI18n, resolveLocale } from '../../shared/i18n/index.js';
+import { buildReport } from '../../shared/report.js';
+import type { TermBreak } from '../../shared/visa/fortnights.js';
+import { readHolidays, readTermBreaks, writeTermBreaks } from '../db/calendar.js';
+import { loadPayslips } from '../payslips/load.js';
+import { readShifts } from './sync.js';
 
 export const analysisRouter = Router();
 

@@ -5,8 +5,8 @@
  *  tambien el .env para descifrarla. */
 
 import crypto from 'node:crypto';
-import { config } from '../config.ts';
-import { clearEnvelope, type EncryptedEnvelope, readEnvelope, writeEnvelope } from '../db/tokens.ts';
+import { config } from '../config.js';
+import { clearEnvelope, type EncryptedEnvelope, readEnvelope, writeEnvelope } from '../db/tokens.js';
 
 const ALGORITHM = 'aes-256-gcm';
 const KEY_SALT = 'horas.deputy.tokens.v1';
