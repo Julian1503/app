@@ -25,7 +25,7 @@ export function Login(): JSX.Element {
   if (!isSupabaseConfigured) {
     return (
       <div className="card empty">
-        <p>Faltan VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY en el entorno del front.</p>
+        <p>Faltan SUPABASE_URL y SUPABASE_ANON_KEY en el entorno del front.</p>
       </div>
     );
   }

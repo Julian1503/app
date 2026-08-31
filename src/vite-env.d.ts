@@ -1,10 +1,11 @@
 /// <reference types="vite/client" />
 
-/** `types: ["node"]` en el tsconfig apaga la inclusion automatica de @types, y
- *  sin esta referencia `import.meta.env` no existe para TypeScript. */
+/** Lo que el navegador ve del entorno. Se inyecta desde el `define` de
+ *  vite.config.ts, no por el prefijo VITE_, asi que cada variable nueva del
+ *  front hay que declararla en los dos lados. */
 interface ImportMetaEnv {
-  readonly VITE_SUPABASE_URL?: string;
-  readonly VITE_SUPABASE_ANON_KEY?: string;
+  readonly SUPABASE_URL?: string;
+  readonly SUPABASE_ANON_KEY?: string;
 }
 
 interface ImportMeta {
