@@ -4,7 +4,7 @@
  *  que el proceso escucha en 127.0.0.1. */
 
 import express from 'express';
-import { config, hasDatabase, hasOAuthCredentials } from './config.ts';
+import { config, hasDatabase, hasOAuthCredentials, isPubliclyReachable } from './config.ts';
 import { NotAuthenticatedError } from './deputy/client.ts';
 import { analysisRouter } from './routes/analysis.ts';
 import { authRouter } from './routes/auth.ts';
@@ -52,9 +52,15 @@ app.use(
   },
 );
 
-app.listen(config.port, '127.0.0.1', () => {
-  console.log(`[horas] API en http://localhost:${config.port}`);
+app.listen(config.port, config.host, () => {
+  console.log(`[horas] API en ${config.apiOrigin}`);
   console.log(`[horas] Front en ${config.webOrigin}`);
+  if (isPubliclyReachable()) {
+    console.warn(
+      `[horas] ATENCION: escuchando en ${config.host}, no en loopback, y la app no tiene login. ` +
+        'Cualquiera que llegue a este host ve sueldos y reportes de salud.',
+    );
+  }
   if (!hasDatabase()) {
     console.error(
       '[horas] Sin SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY: no hay donde guardar nada. Ver README.',

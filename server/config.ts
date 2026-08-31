@@ -55,7 +55,11 @@ export interface AppConfig {
   readonly installUrl: string;
   readonly employeeId: number | null;
   readonly port: number;
+  /** Interfaz donde escucha. 127.0.0.1 salvo que se pida lo contrario. */
+  readonly host: string;
   readonly webOrigin: string;
+  /** Origen publico del API. Es la base del redirect de OAuth. */
+  readonly apiOrigin: string;
   readonly redirectUri: string;
   readonly limit: number;
   readonly kmRate: number;
@@ -75,8 +79,12 @@ export interface AppConfig {
 }
 
 function build(): AppConfig {
-  const port = readNumber('SERVER_PORT', 8787);
+  // Los hosts inyectan el puerto en PORT y no lo podes elegir; SERVER_PORT
+  // queda para desarrollo.
+  const port = readNumber('PORT', readNumber('SERVER_PORT', 8787));
+  const host = process.env.HOST?.trim() || '127.0.0.1';
   const webOrigin = stripTrailingSlash(process.env.WEB_ORIGIN ?? 'http://localhost:5173');
+  const apiOrigin = stripTrailingSlash(process.env.PUBLIC_API_URL?.trim() || `http://localhost:${port}`);
   const payslipsDirRaw = process.env.PAYSLIPS_DIR ?? '../payslips';
   const employeeIdRaw = process.env.DEPUTY_EMPLOYEE_ID?.trim();
 
@@ -86,8 +94,10 @@ function build(): AppConfig {
     installUrl: normalizeEndpoint(process.env.DEPUTY_INSTALL_URL) ?? '',
     employeeId: readEmployeeId(employeeIdRaw),
     port,
+    host,
     webOrigin,
-    redirectUri: `http://localhost:${port}/api/auth/callback`,
+    apiOrigin,
+    redirectUri: `${apiOrigin}/api/auth/callback`,
     limit: readNumber('VISA_FORTNIGHT_LIMIT', DEFAULT_FORTNIGHT_LIMIT),
     kmRate: readNumber('KM_RATE', DEFAULT_KM_RATE),
     payslipsDir: path.resolve(APP_ROOT, payslipsDirRaw),
@@ -108,6 +118,12 @@ export const config = build();
  *  pero solo con los datos ya sincronizados en la base. */
 export function hasOAuthCredentials(): boolean {
   return config.clientId.length > 0 && config.clientSecret.length > 0;
+}
+
+/** true si el proceso queda accesible desde fuera de la maquina. Como no hay
+ *  login, eso expone sueldos y datos de salud a cualquiera que llegue al host. */
+export function isPubliclyReachable(): boolean {
+  return config.host !== '127.0.0.1' && config.host !== 'localhost';
 }
 
 /** true si hay a donde guardar. Sin esto no arranca nada: se avisa al levantar
