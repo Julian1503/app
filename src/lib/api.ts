@@ -2,6 +2,7 @@
  *  la UI pueda distinguir "falta autorizar" de "algo se rompio". */
 
 import { createI18n, type Locale } from '@shared/i18n/index.ts';
+import { accessToken } from './supabase.ts';
 import type { Behaviour } from '@shared/reports/behaviours.ts';
 import type { FieldAnswer, Gap } from '@shared/form/answers.ts';
 import type { FormField } from '@shared/form/schema.ts';
@@ -30,11 +31,17 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  // El API no responde nada sin sesion, asi que el token va en todas.
+  const token = await accessToken();
   let response: Response;
   try {
     response = await fetch(path, {
       ...init,
-      headers: { 'Content-Type': 'application/json', ...(init?.headers ?? {}) },
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(init?.headers ?? {}),
+      },
     });
   } catch {
     throw new ApiError(createI18n(currentLocale()).t('app.error.offline'), 0);
@@ -133,5 +140,11 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(body),
     }),
-  loginUrl: () => withLocale('/api/auth/login'),
+  /** El login de Deputy es una navegacion del navegador, que no lleva headers:
+   *  el token viaja en la query y el middleware lo acepta tambien de ahi. */
+  loginUrl: async () => {
+    const token = await accessToken();
+    const base = withLocale('/api/auth/login');
+    return token ? `${base}${base.includes('?') ? '&' : '?'}token=${encodeURIComponent(token)}` : base;
+  },
 };

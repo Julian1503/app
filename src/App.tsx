@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BackPayNote } from './components/BackPayNote.tsx';
 import { ConnectBar } from './components/ConnectBar.tsx';
+import { SignOutButton } from './components/SessionGate.tsx';
 import { DropPlan } from './components/DropPlan.tsx';
 import { FindingsList } from './components/FindingsList.tsx';
 import { FortnightGauge } from './components/FortnightGauge.tsx';
@@ -142,6 +143,7 @@ export function App(): JSX.Element {
         </div>
         <div className="masthead__meta">
           <LanguageToggle />
+          <SignOutButton />
           {status?.configured && status.authenticated && (
             <ConnectBar
               status={status}

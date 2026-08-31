@@ -2,7 +2,8 @@
 
 import { Router } from 'express';
 import { config, hasOAuthCredentials } from '../config.ts';
-import { consumeState, createAuthorizeUrl, exchangeCode } from '../deputy/oauth.ts';
+import { createAuthorizeUrl, exchangeCode } from '../deputy/oauth.ts';
+import { consumeState } from '../db/oauth-states.ts';
 import { fetchIdentity, isAuthenticated } from '../deputy/client.ts';
 import { clearTokens } from '../store/tokens.ts';
 import { createI18n, resolveLocale } from '../../shared/i18n/index.ts';
@@ -33,13 +34,17 @@ authRouter.get('/status', async (_req, res) => {
   }
 });
 
-authRouter.get('/login', (req, res) => {
-  if (!hasOAuthCredentials()) {
-    const { t } = createI18n(resolveLocale(req.query.locale));
-    res.status(400).json({ error: t('server.auth.missingCredentials') });
-    return;
+authRouter.get('/login', async (req, res, next) => {
+  try {
+    if (!hasOAuthCredentials()) {
+      const { t } = createI18n(resolveLocale(req.query.locale));
+      res.status(400).json({ error: t('server.auth.missingCredentials') });
+      return;
+    }
+    res.redirect(await createAuthorizeUrl());
+  } catch (error) {
+    next(error);
   }
-  res.redirect(createAuthorizeUrl());
 });
 
 authRouter.get('/callback', async (req, res) => {
@@ -56,7 +61,7 @@ authRouter.get('/callback', async (req, res) => {
     return;
   }
 
-  if (!consumeState(typeof state === 'string' ? state : undefined)) {
+  if (!(await consumeState(typeof state === 'string' ? state : undefined))) {
     res.redirect(
       `${config.webOrigin}/?auth_error=${encodeURIComponent('El estado del login no coincide. Volve a intentar desde la app.')}`,
     );

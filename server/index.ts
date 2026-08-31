@@ -1,58 +1,13 @@
-/** Servidor local. No se expone fuera de localhost: es una herramienta personal
- *  que maneja datos de empleo y credenciales de Deputy. Los datos viven en
- *  Supabase, pero no hay login todavia, asi que la unica puerta sigue siendo
- *  que el proceso escucha en 127.0.0.1. */
+/** Servidor local para `npm run dev`.
+ *
+ *  La app en si se arma en `app.ts`; aca solo se la pone a escuchar. Por
+ *  defecto en 127.0.0.1: mientras no haya login, el loopback es lo unico que
+ *  separa tus sueldos y los reportes de salud de cualquiera en la red. */
 
-import express from 'express';
 import { config, hasDatabase, hasOAuthCredentials, isPubliclyReachable } from './config.ts';
-import { NotAuthenticatedError } from './deputy/client.ts';
-import { analysisRouter } from './routes/analysis.ts';
-import { authRouter } from './routes/auth.ts';
-import { reportsRouter } from './routes/reports.ts';
-import { syncRouter } from './routes/sync.ts';
+import { createApp } from './app.ts';
 
-const app = express();
-
-app.use(express.json({ limit: '1mb' }));
-
-// Solo se aceptan peticiones del front local.
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', config.webOrigin);
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,OPTIONS');
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(204);
-    return;
-  }
-  next();
-});
-
-app.use('/api/auth', authRouter);
-app.use('/api', syncRouter);
-app.use('/api', analysisRouter);
-app.use('/api', reportsRouter);
-
-app.use((req, res) => {
-  res.status(404).json({ error: `Ruta desconocida: ${req.method} ${req.path}` });
-});
-
-app.use(
-  (
-    error: Error,
-    _req: express.Request,
-    res: express.Response,
-    _next: express.NextFunction,
-  ): void => {
-    if (error instanceof NotAuthenticatedError) {
-      res.status(401).json({ error: error.message, needsAuth: true });
-      return;
-    }
-    console.error('[horas]', error);
-    res.status(500).json({ error: error.message });
-  },
-);
-
-app.listen(config.port, config.host, () => {
+createApp().listen(config.port, config.host, () => {
   console.log(`[horas] API en ${config.apiOrigin}`);
   console.log(`[horas] Front en ${config.webOrigin}`);
   if (isPubliclyReachable()) {

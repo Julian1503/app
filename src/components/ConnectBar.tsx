@@ -29,9 +29,18 @@ export function ConnectBar({ status, lastSyncAt, syncing, onSync, onLogout }: Pr
     return (
       <div className="notice notice--info">
         <p>{t('connect.notAuthorised')}</p>
-        <a className="button" href={api.loginUrl()}>
+        {/* La URL de login se arma con el token de sesion, asi que hay que
+            resolverla antes de navegar: un href no puede esperar una promesa. */}
+        <button
+          className="button"
+          onClick={() => {
+            void api.loginUrl().then((url) => {
+              window.location.href = url;
+            });
+          }}
+        >
           {t('connect.login')}
-        </a>
+        </button>
       </div>
     );
   }

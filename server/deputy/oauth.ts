@@ -9,6 +9,7 @@
 
 import crypto from 'node:crypto';
 import { config } from '../config.ts';
+import { purgeExpiredStates, rememberState } from '../db/oauth-states.ts';
 import { saveTokens, type TokenSet } from '../store/tokens.ts';
 import { normalizeEndpoint } from './endpoint.ts';
 
@@ -28,14 +29,11 @@ interface DeputyTokenResponse {
   error_description?: string;
 }
 
-/** Estados pendientes del flujo, en memoria: si reinicias el server se pierden y hay que loguear de nuevo. */
-const pendingStates = new Set<string>();
-
-export function createAuthorizeUrl(): string {
+export async function createAuthorizeUrl(): Promise<string> {
   const state = crypto.randomBytes(16).toString('hex');
-  pendingStates.add(state);
-  // Un login que quedo a medias no deberia bloquear el proximo intento.
-  setTimeout(() => pendingStates.delete(state), 10 * 60 * 1000).unref?.();
+  await rememberState(state);
+  // Aprovecha el viaje para barrer los que quedaron a medias.
+  void purgeExpiredStates().catch(() => {});
 
   const params = new URLSearchParams({
     client_id: config.clientId,
@@ -45,12 +43,6 @@ export function createAuthorizeUrl(): string {
     state,
   });
   return `${AUTHORIZE_URL}?${params.toString()}`;
-}
-
-export function consumeState(state: string | undefined): boolean {
-  if (!state || !pendingStates.has(state)) return false;
-  pendingStates.delete(state);
-  return true;
 }
 
 async function requestToken(body: Record<string, string>): Promise<TokenSet> {
