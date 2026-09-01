@@ -102,6 +102,14 @@ export interface SyncResponse {
   warning: string | null;
 }
 
+export interface PayslipUploadResult {
+  parsed: number;
+  added: number;
+  replaced: number;
+  total: number;
+  periods: string[];
+}
+
 export interface ShiftReportsResponse {
   entries: ReportEntry[];
   behaviours: Behaviour[];
@@ -137,6 +145,13 @@ export const api = {
       body: JSON.stringify(breaks),
     }),
   shiftReports: () => request<ShiftReportsResponse>(withLocale('/api/shift-reports')),
+  /** El PDF viaja crudo: mandarlo en JSON obligaria a pasarlo por base64 y
+   *  crecer un tercio para nada. */
+  uploadPayslip: (file: File) =>
+    request<PayslipUploadResult>(
+      `${withLocale('/api/payslips')}&filename=${encodeURIComponent(file.name)}`,
+      { method: 'POST', body: file, headers: { 'Content-Type': 'application/pdf' } },
+    ),
   saveShiftReport: (shiftId: string, body: ShiftReportInput) =>
     request<ShiftReport>(reportPath(shiftId), { method: 'PUT', body: JSON.stringify(body) }),
   /** Etapa 1: mapea la nota de Deputy al formulario y devuelve lo que falta. */

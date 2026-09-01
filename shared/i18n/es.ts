@@ -68,6 +68,12 @@ export const es = {
   'section.payslips.title': 'Payslips',
   'section.payslips.note': (p: { files: number; paid: number; roster: number }) =>
     `${p.files} archivos leídos · ${p.paid} h pagadas contra ${p.roster} h de roster`,
+  'section.payslips.upload': 'Subir payslip',
+  'section.payslips.uploading': 'Leyendo…',
+  'section.payslips.uploaded': (p: { added: number; replaced: number; periods: string }) =>
+    p.replaced > 0
+      ? `Listo: ${p.added} periodo(s) nuevo(s) y ${p.replaced} actualizado(s). ${p.periods}`
+      : `Listo: ${p.added} periodo(s) nuevo(s). ${p.periods}`,
   'section.payslips.failures': (p: { count: number; files: string }) =>
     `No se pudieron leer ${p.count} archivo(s): ${p.files}`,
 
@@ -431,6 +437,8 @@ export const es = {
     `No se pudieron leer los turnos publicados: ${p.reason}`,
   'server.auth.missingCredentials':
     'Faltan DEPUTY_CLIENT_ID y DEPUTY_CLIENT_SECRET en el .env. Registrá el cliente OAuth en https://once.deputy.com/my/oauth/list',
+  'server.payslips.empty': 'No llegó ningún archivo.',
+  'server.payslips.notPdf': 'El archivo no es un PDF.',
   'server.termBreaks.notAList': 'Se esperaba una lista de periodos.',
   'server.reports.nothingToFinalise':
     'Todavía no hay nada mapeado al formulario. Corré "Mapear al formulario" primero.',

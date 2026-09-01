@@ -57,6 +57,12 @@ export const en: Messages = {
   'section.payslips.title': 'Payslips',
   'section.payslips.note': (p) =>
     `${p.files} files read · ${p.paid} h paid against ${p.roster} h of roster`,
+  'section.payslips.upload': 'Upload payslip',
+  'section.payslips.uploading': 'Reading…',
+  'section.payslips.uploaded': (p) =>
+    p.replaced > 0
+      ? `Done: ${p.added} new period(s) and ${p.replaced} updated. ${p.periods}`
+      : `Done: ${p.added} new period(s). ${p.periods}`,
   'section.payslips.failures': (p) => `Could not read ${p.count} file(s): ${p.files}`,
 
   // --- Fortnight panel ---
@@ -379,6 +385,8 @@ export const en: Messages = {
   'server.sync.noEmployeeId':
     'Could not work out your employeeId. Set it by hand in DEPUTY_EMPLOYEE_ID in the .env.',
   'server.sync.rosterWarning': (p) => `Could not read the published roster: ${p.reason}`,
+  'server.payslips.empty': 'No file received.',
+  'server.payslips.notPdf': 'That file is not a PDF.',
   'server.auth.missingCredentials':
     'DEPUTY_CLIENT_ID and DEPUTY_CLIENT_SECRET are missing from the .env. Register the OAuth client at https://once.deputy.com/my/oauth/list',
   'server.termBreaks.notAList': 'Expected a list of periods.',

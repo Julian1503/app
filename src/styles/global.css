@@ -1591,3 +1591,37 @@ a.button {
   background: transparent;
   border: 1px solid var(--border, #ccd);
 }
+
+/* --- Subida de payslips ------------------------------------------------- */
+
+.upload {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* El input nativo no se puede estilar; se oculta y el <label> hace de boton. */
+.upload__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sigue recibiendo foco por teclado: el label es su etiqueta. */
+.upload__input:focus-visible + .button {
+  outline: 2px solid var(--accent, #246);
+  outline-offset: 2px;
+}
+
+.upload__msg {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted, #667);
+}
+
+.upload__msg--error {
+  color: var(--danger, #b00020);
+}

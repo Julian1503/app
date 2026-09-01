@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { BackPayNote } from './components/BackPayNote.tsx';
 import { ConnectBar } from './components/ConnectBar.tsx';
+import { PayslipUpload } from './components/PayslipUpload.tsx';
 import { SignOutButton } from './components/SessionGate.tsx';
 import { DropPlan } from './components/DropPlan.tsx';
 import { FindingsList } from './components/FindingsList.tsx';
@@ -294,6 +295,7 @@ export function App(): JSX.Element {
                   roster: report.totals.rosterHours,
                 })}
               </span>
+              <PayslipUpload onDone={() => void load()} />
             </div>
             <PayslipTable payslips={report.payslips} />
             {data.meta.payslipFailures.length > 0 && (

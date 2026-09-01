@@ -9,6 +9,7 @@ import { config } from './config.js';
 import { NotAuthenticatedError } from './deputy/client.js';
 import { analysisRouter } from './routes/analysis.js';
 import { authRouter } from './routes/auth.js';
+import { payslipsRouter } from './routes/payslips.js';
 import { reportsRouter } from './routes/reports.js';
 import { syncRouter } from './routes/sync.js';
 
@@ -37,6 +38,7 @@ export function createApp(): express.Express {
   app.use('/api', syncRouter);
   app.use('/api', analysisRouter);
   app.use('/api', reportsRouter);
+  app.use('/api', payslipsRouter);
 
   app.use((req, res) => {
     res.status(404).json({ error: `Ruta desconocida: ${req.method} ${req.path}` });
