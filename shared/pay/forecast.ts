@@ -184,6 +184,11 @@ export function forecastWeek(input: ForecastInput): PayForecast {
           gross: payslip.totalEarnings,
           tax: payslip.taxWithheld,
           net: payslip.netPay,
+          // No es `travelCostsPaid`: ese solo suma las lineas que dicen "Travel",
+          // mientras que `bankPayment` suma **todos** los reembolsos. Restar el
+          // neto es lo unico que garantiza que el desglose siga cerrando contra
+          // el deposito el dia que aparezca un reembolso que no sea de viaje.
+          reimbursements: money(payslip.bankPayment - payslip.netPay),
           superannuation: payslip.superannuation,
           bankPayment: payslip.bankPayment,
           paidHours: payslip.paidHours,

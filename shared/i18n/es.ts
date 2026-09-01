@@ -203,6 +203,12 @@ export const es = {
   }) =>
     `${p.range}: declaraste ${p.declared} km y te pagaron ${p.paidMoney} (${p.paidKm} km a $${p.rate}/km). Turnos con km: ${p.shifts}.`,
   'f.km.noDetail': 'sin detalle',
+  'f.km.titleSettled': (p: { km: number; money: string }) =>
+    `${p.km} km reintegrados en un payslip posterior (${p.money})`,
+  'f.km.settledNote': (p: { km: number; money: string; date: string }) =>
+    ` Ya te los reintegraron: ${p.money} (${p.km} km) llegaron en el pago del ${p.date}.`,
+  'f.km.partialNote': (p: { km: number; money: string; date: string }) =>
+    ` De esos, ${p.money} (${p.km} km) volvieron en el pago del ${p.date}; el resto sigue abierto.`,
   'f.kmLimit.title': (p: { km: number; limit: number }) =>
     `${p.km} km declarados superan el límite de ${p.limit} km`,
   'f.kmLimit.detail': (p: { date: string; limit: number }) =>

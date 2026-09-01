@@ -95,3 +95,79 @@ test('las Night Hours se reportan como impacto en la visa', () => {
   assert.equal(night?.severity, 'critical');
   assert.equal(night?.category, 'visa');
 });
+
+test('un reintegro que llega en el payslip siguiente no se reclama dos veces', () => {
+  // La semana del 6 declara 10 km y cobra $0; la del 13 no declara ninguno y
+  // cobra $9.90. Es el mismo reintegro, llegado tarde: no se debe nada.
+  const shifts = [shift('2026-08-07', 9, 12, '10 km')];
+  const payslips = [
+    payslip({ travelCostsPaid: 0 }),
+    payslip({
+      periodStart: '2026-08-13',
+      periodEnd: '2026-08-19',
+      paymentDate: '2026-08-20',
+      travelCostsPaid: 9.9,
+    }),
+  ];
+  const result = reconcileKm(payslips, shifts, 0.99, I18N);
+
+  assert.equal(result.owed, 0);
+  assert.equal(result.moneyOwed, 0);
+
+  const claim = result.findings.find((finding) => finding.id === 'km:2026-08-06');
+  assert.equal(claim?.severity, 'info', 'el hallazgo queda como constancia, no como reclamo');
+  assert.equal(claim?.amount, null);
+});
+
+test('un reintegro tardio parcial deja abierto solo el resto', () => {
+  const shifts = [shift('2026-08-07', 9, 12, '10 km')];
+  const payslips = [
+    payslip({ travelCostsPaid: 0 }),
+    payslip({
+      periodStart: '2026-08-13',
+      periodEnd: '2026-08-19',
+      paymentDate: '2026-08-20',
+      travelCostsPaid: 3.96,
+    }),
+  ];
+  const result = reconcileKm(payslips, shifts, 0.99, I18N);
+
+  assert.equal(result.owed, 6);
+  assert.equal(result.moneyOwed, 5.94);
+
+  const claim = result.findings.find((finding) => finding.id === 'km:2026-08-06');
+  assert.equal(claim?.severity, 'high');
+  assert.equal(claim?.amount, 5.94);
+});
+
+test('el orden de los payslips no cambia la imputacion del reintegro tardio', () => {
+  const shifts = [shift('2026-08-07', 9, 12, '10 km')];
+  const later = payslip({
+    periodStart: '2026-08-13',
+    periodEnd: '2026-08-19',
+    paymentDate: '2026-08-20',
+    travelCostsPaid: 9.9,
+  });
+  const result = reconcileKm([later, payslip({ travelCostsPaid: 0 })], shifts, 0.99, I18N);
+
+  assert.equal(result.owed, 0);
+});
+
+test('cobrar km sin haberlos declarado no genera un credito a favor', () => {
+  // Sin ninguna semana corta previa el excedente no se imputa a nada: el total
+  // adeudado no puede quedar en negativo ni compensar reclamos futuros.
+  const shifts = [shift('2026-08-07', 9, 12, '10 km')];
+  const payslips = [
+    payslip({ travelCostsPaid: 19.8 }),
+    payslip({
+      periodStart: '2026-08-13',
+      periodEnd: '2026-08-19',
+      paymentDate: '2026-08-20',
+      travelCostsPaid: 0,
+    }),
+  ];
+  const result = reconcileKm(payslips, shifts, 0.99, I18N);
+
+  assert.equal(result.owed, 0);
+  assert.equal(result.moneyOwed, 0);
+});

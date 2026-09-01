@@ -166,6 +166,9 @@ export interface PayForecast {
     readonly gross: number;
     readonly tax: number;
     readonly net: number;
+    /** Viaticos que el payslip efectivamente pago. Van fuera de `gross` -no se
+     *  gravan ni generan aporte- pero adentro de `bankPayment`. */
+    readonly reimbursements: number;
     readonly superannuation: number;
     readonly bankPayment: number;
     readonly paidHours: number;

@@ -89,10 +89,10 @@ export function PayCheque({ forecast, taxYear }: Props): JSX.Element {
             <span className="stat__label">{t('pay.stat.super')}</span>
             <span className="stat__value">{money(figures.superannuation)}</span>
           </div>
-          {forecast.reimbursements > 0 && (
+          {figures.reimbursements > 0 && (
             <div>
               <span className="stat__label">{t('pay.stat.reimbursements')}</span>
-              <span className="stat__value">+{money(forecast.reimbursements)}</span>
+              <span className="stat__value">+{money(figures.reimbursements)}</span>
             </div>
           )}
         </div>

@@ -47,11 +47,17 @@ export function chequeHeadline(forecast: PayForecast, t: Translate): string {
  *
  *  Cuando el payslip ya llego manda el payslip: la estimacion pasa a ser un
  *  contraste, no el numero. Mostrar el estimado en una fila rotulada "liquidado"
- *  seria decir que cobraste algo que no cobraste. */
+ *  seria decir que cobraste algo que no cobraste.
+ *
+ *  El reintegro entra en el mismo paquete y no como cifra suelta a proposito: es
+ *  parte del deposito, y tomarlo del pronostico mientras el resto sale del
+ *  payslip hacia que el desglose no cerrara contra el numero grande en las
+ *  semanas donde el empleador pago menos km de los declarados. */
 export function displayedFigures(forecast: PayForecast): {
   gross: number;
   tax: number;
   net: number;
+  reimbursements: number;
   superannuation: number;
   bankPayment: number;
   paidHours: number;

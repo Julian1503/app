@@ -175,6 +175,11 @@ export const en: Messages = {
   'f.km.detail': (p) =>
     `${p.range}: you declared ${p.declared} km and were paid ${p.paidMoney} (${p.paidKm} km at $${p.rate}/km). Shifts with km: ${p.shifts}.`,
   'f.km.noDetail': 'no detail',
+  'f.km.titleSettled': (p) => `${p.km} km reimbursed in a later payslip (${p.money})`,
+  'f.km.settledNote': (p) =>
+    ` These were reimbursed: ${p.money} (${p.km} km) arrived in the ${p.date} payment.`,
+  'f.km.partialNote': (p) =>
+    ` Of those, ${p.money} (${p.km} km) came back in the ${p.date} payment; the rest is still open.`,
   'f.kmLimit.title': (p) => `${p.km} km declared is over the ${p.limit} km limit`,
   'f.kmLimit.detail': (p) =>
     `${p.date}: above ${p.limit} km you need manager approval, otherwise it can be rejected.`,

@@ -10,6 +10,7 @@ import {
 } from '../shared/pay/findings.js';
 import { forecastWeek } from '../shared/pay/forecast.js';
 import { buildRateTimeline, rateCardFor } from '../shared/pay/rates.js';
+import { displayedFigures } from '../src/lib/pay-view.js';
 import type { Payslip, PayslipLine, RateCard, Shift } from '../shared/types.js';
 
 function shift(date: string, start: number, end: number): Shift {
@@ -194,4 +195,48 @@ test('las tarifas se leen del payslip y arrastran las que no cambian', () => {
   assert.equal(rateCardFor(timeline, '2026-07-16').hourly.evening, 36.16);
   // Una fecha futura usa las ultimas tarifas conocidas.
   assert.equal(rateCardFor(timeline, '2027-01-01').hourly.ordinary, 34.44);
+});
+
+test('el reintegro que se muestra sale del payslip y no del pronostico', () => {
+  // 36 km declarados de los que el empleador reembolso 18. El numero grande del
+  // cheque sale del payslip, asi que el desglose tiene que salir de ahi tambien:
+  // mezclarlos hacia que neto mas reintegro no diera el deposito.
+  const week = payWeekOf('2026-08-06');
+  const withKm: Shift = { ...shift('2026-08-07', 9, 15), kmDeclared: 36 };
+  const actual = payslip({
+    totalEarnings: 210,
+    netPay: 210,
+    travelCostsPaid: 17.82,
+    bankPayment: 227.82,
+  });
+  const forecast = forecastWeek({
+    week,
+    shifts: [withKm],
+    rates: RATES,
+    holidays: new Set<string>(),
+    kmRate: 0.99,
+    payslip: actual,
+  });
+
+  assert.equal(forecast.reimbursements, 35.64);
+  assert.equal(forecast.actual?.reimbursements, 17.82);
+
+  const figures = displayedFigures(forecast);
+  assert.equal(figures.reimbursements, 17.82);
+  assert.equal(Math.round((figures.net + figures.reimbursements) * 100) / 100, figures.bankPayment);
+});
+
+test('sin payslip el reintegro mostrado es el del pronostico', () => {
+  const week = payWeekOf('2026-08-06');
+  const withKm: Shift = { ...shift('2026-08-07', 9, 15), kmDeclared: 10 };
+  const forecast = forecastWeek({
+    week,
+    shifts: [withKm],
+    rates: RATES,
+    holidays: new Set<string>(),
+    kmRate: 0.99,
+    payslip: null,
+  });
+
+  assert.equal(displayedFigures(forecast).reimbursements, 9.9);
 });
