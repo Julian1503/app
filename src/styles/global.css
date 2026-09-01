@@ -1625,3 +1625,128 @@ a.button {
 .upload__msg--error {
   color: var(--danger, #b00020);
 }
+
+/* --- Pestañas del tablero -------------------------------------------------
+   Prefijo `navtabs` y no `tabs`: esas clases ya son de las pestañas internas
+   de Reportes (pendientes / archivados) y compartirlas mezclaba las dos. */
+
+.navtabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  margin-top: var(--gap);
+  border-bottom: 2px solid var(--ink);
+  /* En pantalla angosta la barra se desplaza en vez de romper el renglón. */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navtabs::-webkit-scrollbar {
+  display: none;
+}
+
+.navtabs__item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--ink-faint);
+  font: inherit;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  /* El indicador es el borde inferior: se anima color, nunca layout. */
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+.navtabs__item:hover {
+  color: var(--ink);
+  background: var(--paper-sunk);
+}
+
+.navtabs__item--active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+.navtabs__item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+/* En pantalla chica las cuatro pestañas entran justas: se recorta el aire
+   lateral antes de mandarlas al scroll horizontal, que obliga a descubrir que
+   hay algo mas a la derecha. */
+@media (max-width: 480px) {
+  .navtabs__item {
+    padding: 0.55rem 0.5rem;
+    letter-spacing: 0;
+  }
+}
+
+.navtabs__badge {
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.78em;
+  font-variant-numeric: tabular-nums;
+}
+
+.navtabs__item--active /* En pantalla chica las cuatro pestañas entran justas: se recorta el aire
+   lateral antes de mandarlas al scroll horizontal, que obliga a descubrir que
+   hay algo mas a la derecha. */
+@media (max-width: 480px) {
+  .navtabs__item {
+    padding: 0.55rem 0.5rem;
+    letter-spacing: 0;
+  }
+}
+
+.navtabs__badge {
+  background: var(--accent);
+  color: var(--surface-raised);
+}
+
+/* --- Dos columnas dentro de una pestaña --------------------------------- */
+
+.panels__stack {
+  min-width: 0;
+}
+
+.panels {
+  display: grid;
+  gap: var(--gap-section);
+  /* Se parte en dos solo cuando cada columna tiene lugar real; por debajo de
+     eso las tablas de adentro empiezan a apretarse y se lee peor en una. */
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* El medidor a un costado, con el recorte y la escalera apilados al lado.
+   Los 520px no son decorativos: la tarjeta del medidor ya reserva 260px para
+   el arco, y por debajo de eso el texto de al lado cae a una palabra por
+   renglon. */
+@media (min-width: 1000px) {
+  .panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .panels--aside {
+    grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+  }
+
+  /* La primera sección de cada columna no necesita el aire de arriba: ya lo
+     da el gap de la grilla. */
+  .panels > .section,
+  .panels__stack > .section:first-child {
+    margin-top: 0;
+  }
+}

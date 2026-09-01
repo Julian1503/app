@@ -33,7 +33,7 @@ export const en: Messages = {
   'connect.never': 'never',
   'connect.syncing': 'Syncing…',
   'connect.sync': 'Sync',
-  'connect.logout': 'Sign out',
+  'connect.logout': 'Disconnect Deputy',
 
   // --- Sections ---
   'section.pay.title': 'What you are going to be paid',
@@ -54,6 +54,13 @@ export const en: Messages = {
   'section.fortnights.title': 'All fortnights',
   'section.fortnights.note': (p) =>
     `Pick one to see it above · 14-day windows from every Monday · the vertical mark is the ${p.limit} h limit`,
+  'app.signOut': 'Sign out',
+
+  'tabs.fortnight': 'Fortnight',
+  'tabs.pay': 'Pay',
+  'tabs.review': 'Review',
+  'tabs.reports': 'Reports',
+
   'section.payslips.title': 'Payslips',
   'section.payslips.note': (p) =>
     `${p.files} files read · ${p.paid} h paid against ${p.roster} h of roster`,

@@ -5,6 +5,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import { Login } from './Login.tsx';
+import { useI18n } from '../lib/i18n.tsx';
 import { supabase } from '../lib/supabase.ts';
 
 export function SessionGate({ children }: { children: ReactNode }): JSX.Element {
@@ -26,10 +27,13 @@ export function SessionGate({ children }: { children: ReactNode }): JSX.Element 
   return <>{children}</>;
 }
 
+/** Cierra la sesion de la app. Es distinto de `connect.logout`, que solo
+ *  desconecta Deputy y deja la sesion abierta. */
 export function SignOutButton(): JSX.Element {
+  const { i18n } = useI18n();
   return (
     <button className="button button--ghost" onClick={() => void supabase.auth.signOut()}>
-      Salir
+      {i18n.t('app.signOut')}
     </button>
   );
 }

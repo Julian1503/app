@@ -65,6 +65,13 @@ export const es = {
   'section.fortnights.title': 'Todas las quincenas',
   'section.fortnights.note': (p: { limit: number }) =>
     `Elegí una para verla arriba · ventanas de 14 días desde cada lunes · la marca vertical es el límite de ${p.limit} h`,
+  'app.signOut': 'Salir',
+
+  'tabs.fortnight': 'Quincena',
+  'tabs.pay': 'Pagos',
+  'tabs.review': 'Revisión',
+  'tabs.reports': 'Reportes',
+
   'section.payslips.title': 'Payslips',
   'section.payslips.note': (p: { files: number; paid: number; roster: number }) =>
     `${p.files} archivos leídos · ${p.paid} h pagadas contra ${p.roster} h de roster`,

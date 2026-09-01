@@ -1,29 +1,43 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { BackPayNote } from './components/BackPayNote.tsx';
-import { ConnectBar } from './components/ConnectBar.tsx';
-import { PayslipUpload } from './components/PayslipUpload.tsx';
-import { SignOutButton } from './components/SessionGate.tsx';
-import { DropPlan } from './components/DropPlan.tsx';
-import { FindingsList } from './components/FindingsList.tsx';
-import { FortnightGauge } from './components/FortnightGauge.tsx';
-import { FortnightLadder } from './components/FortnightLadder.tsx';
-import { LanguageToggle } from './components/LanguageToggle.tsx';
-import { PayCheque } from './components/PayCheque.tsx';
-import { PayslipTable } from './components/PayslipTable.tsx';
-import { PayWeeks } from './components/PayWeeks.tsx';
-import { ShiftReports } from './components/ShiftReports.tsx';
-import { api, ApiError, type AuthStatus, type ReportResponse } from './lib/api.ts';
-import { useI18n } from './lib/i18n.tsx';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BackPayNote } from "./components/BackPayNote.tsx";
+import { ConnectBar } from "./components/ConnectBar.tsx";
+import { PayslipUpload } from "./components/PayslipUpload.tsx";
+import { SignOutButton } from "./components/SessionGate.tsx";
+import { DropPlan } from "./components/DropPlan.tsx";
+import { FindingsList } from "./components/FindingsList.tsx";
+import { FortnightGauge } from "./components/FortnightGauge.tsx";
+import { FortnightLadder } from "./components/FortnightLadder.tsx";
+import { LanguageToggle } from "./components/LanguageToggle.tsx";
+import { PayCheque } from "./components/PayCheque.tsx";
+import { PayslipTable } from "./components/PayslipTable.tsx";
+import { PayWeeks } from "./components/PayWeeks.tsx";
+import { ShiftReports } from "./components/ShiftReports.tsx";
+import { Tabs, TabPanel, useTabs, type TabDef } from "./components/Tabs.tsx";
+import {
+  api,
+  ApiError,
+  type AuthStatus,
+  type ReportResponse,
+} from "./lib/api.ts";
+import { useI18n } from "./lib/i18n.tsx";
 
 const TODAY = new Date().toISOString().slice(0, 10);
 
 /** Lee el resultado del callback OAuth y limpia la URL para no repetir el aviso. */
 function readAuthFeedback(): string | null {
   const params = new URLSearchParams(window.location.search);
-  const error = params.get('auth_error');
-  const ok = params.get('auth');
+  const error = params.get("auth_error");
+  const ok = params.get("auth");
   if (!error && !ok) return null;
-  window.history.replaceState({}, '', window.location.pathname);
+  // Se limpian solo los del callback: el `tab` es estado de la UI y sobrevive.
+  params.delete("auth_error");
+  params.delete("auth");
+  const query = params.toString();
+  window.history.replaceState(
+    {},
+    "",
+    `${window.location.pathname}${query ? `?${query}` : ""}`,
+  );
   return error;
 }
 
@@ -44,12 +58,17 @@ export function App(): JSX.Element {
 
   const load = useCallback(async (): Promise<void> => {
     try {
-      const [authStatus, report] = await Promise.all([api.authStatus(), api.report()]);
+      const [authStatus, report] = await Promise.all([
+        api.authStatus(),
+        api.report(),
+      ]);
       setStatus(authStatus);
       setData(report);
       setError(null);
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : t('app.error.unexpected'));
+      setError(
+        err instanceof ApiError ? err.message : t("app.error.unexpected"),
+      );
     } finally {
       setLoading(false);
     }
@@ -57,7 +76,7 @@ export function App(): JSX.Element {
 
   useEffect(() => {
     const feedback = readAuthFeedback();
-    if (feedback) setError(t('app.error.auth', { reason: feedback }));
+    if (feedback) setError(t("app.error.auth", { reason: feedback }));
     // Solo al montar: el mensaje del callback OAuth se lee una vez.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -76,7 +95,7 @@ export function App(): JSX.Element {
       if (result.warning) setError(result.warning);
       await load();
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : t('app.error.sync'));
+      setError(err instanceof ApiError ? err.message : t("app.error.sync"));
     } finally {
       setSyncing(false);
     }
@@ -89,15 +108,18 @@ export function App(): JSX.Element {
 
   const report = data?.report;
   const overFortnights = (report?.fortnights ?? []).filter(
-    (fortnight) => fortnight.status === 'over' && fortnight.end >= TODAY,
+    (fortnight) => fortnight.status === "over" && fortnight.end >= TODAY,
   );
 
   // Si tras un sync la quincena fijada ya no existe, el indice cae en -1 y se
   // vuelve sola a la vigente en vez de quedar en un panel vacio.
   const fortnights = report?.fortnights ?? [];
   const activeStart = pinnedStart ?? report?.current?.start ?? null;
-  const activeIndex = fortnights.findIndex((fortnight) => fortnight.start === activeStart);
-  const active = activeIndex >= 0 ? fortnights[activeIndex]! : (report?.current ?? null);
+  const activeIndex = fortnights.findIndex(
+    (fortnight) => fortnight.start === activeStart,
+  );
+  const active =
+    activeIndex >= 0 ? fortnights[activeIndex]! : (report?.current ?? null);
 
   const step = useCallback(
     (delta: number): void => {
@@ -108,8 +130,13 @@ export function App(): JSX.Element {
   );
 
   const scrollTo = useCallback((target: HTMLElement | null): void => {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    target?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    target?.scrollIntoView({
+      behavior: reduced ? "auto" : "smooth",
+      block: "center",
+    });
   }, []);
 
   /** Al elegir desde la escalera el panel queda fuera de vista: se lo trae. */
@@ -129,9 +156,28 @@ export function App(): JSX.Element {
     [scrollTo],
   );
 
+  // useMemo porque `useTabs` escucha `popstate` con `tabs` en las dependencias:
+  // recrear el array en cada render reengancharia el listener sin necesidad.
+  const tabs: TabDef[] = useMemo(
+    () => [
+      { id: "quincena", label: t("tabs.fortnight") },
+      { id: "pagos", label: t("tabs.pay") },
+      {
+        id: "revision",
+        label: t("tabs.review"),
+        badge: report?.findings.length ?? null,
+      },
+      { id: "reportes", label: t("tabs.reports") },
+    ],
+    [t, report?.findings.length],
+  );
+  const [activeTab, selectTab] = useTabs(tabs);
+
   const payWeeks = report?.pay.weeks ?? [];
   const activeCheque =
-    (pinnedPayWeek ? payWeeks.find((week) => week.weekStart === pinnedPayWeek) : null) ??
+    (pinnedPayWeek
+      ? payWeeks.find((week) => week.weekStart === pinnedPayWeek)
+      : null) ??
     report?.pay.next ??
     null;
 
@@ -139,8 +185,8 @@ export function App(): JSX.Element {
     <div className="shell">
       <header className="masthead">
         <div>
-          <p className="eyebrow">{t('app.eyebrow')}</p>
-          <h1>{t('app.title')}</h1>
+          <p className="eyebrow">{t("app.eyebrow")}</p>
+          <h1>{t("app.title")}</h1>
         </div>
         <div className="masthead__meta">
           <LanguageToggle />
@@ -174,141 +220,164 @@ export function App(): JSX.Element {
         </div>
       )}
 
-      {loading && <div className="card empty">{t('app.loading')}</div>}
+      {loading && <div className="card empty">{t("app.loading")}</div>}
 
       {report && (
         <>
-          <section className="section" ref={gaugeRef}>
-            <FortnightGauge
-              fortnight={active}
-              limit={report.limit}
-              today={TODAY}
-              canPrev={activeIndex > 0}
-              canNext={activeIndex >= 0 && activeIndex < fortnights.length - 1}
-              onPrev={() => step(-1)}
-              onNext={() => step(1)}
-              onCurrent={
-                pinnedStart && pinnedStart !== report.current?.start
-                  ? () => setPinnedStart(null)
-                  : null
-              }
-            />
-          </section>
+          <Tabs tabs={tabs} active={activeTab} onSelect={selectTab} />
 
-          <section className="section" ref={chequeRef}>
-            <div className="section__head">
-              <h2>{t('section.pay.title')}</h2>
-              <span className="section__note">
-                {t('section.pay.note', { taxYear: report.pay.taxYear })}
-                {pinnedPayWeek && pinnedPayWeek !== report.pay.next?.weekStart && (
-                  <>
-                    {' · '}
-                    <button type="button" className="linkish" onClick={() => setPinnedPayWeek(null)}>
-                      {t('section.pay.back')}
-                    </button>
-                  </>
-                )}
-              </span>
-            </div>
-            <PayCheque forecast={activeCheque} taxYear={report.pay.taxYear} />
-          </section>
+          <TabPanel id="quincena" active={activeTab}>
+            <div className="panels panels--aside">
+              <section className="section" ref={gaugeRef}>
+                <FortnightGauge
+                  fortnight={active}
+                  limit={report.limit}
+                  today={TODAY}
+                  canPrev={activeIndex > 0}
+                  canNext={
+                    activeIndex >= 0 && activeIndex < fortnights.length - 1
+                  }
+                  onPrev={() => step(-1)}
+                  onNext={() => step(1)}
+                  onCurrent={
+                    pinnedStart && pinnedStart !== report.current?.start
+                      ? () => setPinnedStart(null)
+                      : null
+                  }
+                />
+              </section>
 
-          <section className="section">
-            <div className="section__head">
-              <h2>{t('section.weeks.title')}</h2>
-              <span className="section__note">
-                {t('section.weeks.note', {
-                  year: report.pay.yearToDate.financialYear,
-                  gross: money(report.pay.yearToDate.gross),
-                  tax: money(report.pay.yearToDate.tax),
-                  superannuation: money(report.pay.yearToDate.superannuation),
-                  count: report.pay.yearToDate.payslips,
-                })}
-              </span>
-            </div>
-            <BackPayNote rollup={report.pay.backPay} />
-            <PayWeeks
-              weeks={payWeeks}
-              today={TODAY}
-              selectedStart={activeCheque?.weekStart ?? null}
-              onSelect={selectPayWeek}
-            />
-          </section>
+              <div className="panels__stack">
+                <section className="section">
+                  <div className="section__head">
+                    <h2>{t("section.drop.title")}</h2>
+                    <span className="section__note">
+                      {t("section.drop.note", { count: overFortnights.length })}
+                    </span>
+                  </div>
+                  <DropPlan
+                    plan={report.dropPlan}
+                    overFortnights={overFortnights}
+                    limit={report.limit}
+                  />
+                </section>
 
-          <section className="section">
-            <div className="section__head">
-              <h2>{t('section.drop.title')}</h2>
-              <span className="section__note">
-                {t('section.drop.note', { count: overFortnights.length })}
-              </span>
-            </div>
-            <DropPlan
-              plan={report.dropPlan}
-              overFortnights={overFortnights}
-              limit={report.limit}
-            />
-          </section>
-
-          <section className="section">
-            <div className="section__head">
-              <h2>{t('section.findings.title')}</h2>
-              <span className="section__note">
-                {t('section.findings.note', {
-                  count: report.findings.length,
-                  shortfall: money(report.totals.payShortfall),
-                  km: money(report.totals.moneyOwed),
-                  recovered: money(report.totals.payRecovered),
-                  hasRecovered: report.totals.payRecovered > 0,
-                })}
-              </span>
-            </div>
-            <FindingsList findings={report.findings} />
-          </section>
-
-          <section className="section">
-            <ShiftReports />
-          </section>
-
-          <section className="section">
-            <div className="section__head">
-              <h2>{t('section.fortnights.title')}</h2>
-              <span className="section__note">
-                {t('section.fortnights.note', { limit: report.limit })}
-              </span>
-            </div>
-            <FortnightLadder
-              fortnights={report.fortnights}
-              limit={report.limit}
-              today={TODAY}
-              selectedStart={active?.start ?? null}
-              onSelect={selectFromLadder}
-            />
-          </section>
-
-          <section className="section">
-            <div className="section__head">
-              <h2>{t('section.payslips.title')}</h2>
-              <span className="section__note">
-                {t('section.payslips.note', {
-                  files: data.meta.payslipFiles,
-                  paid: report.totals.paidHours,
-                  roster: report.totals.rosterHours,
-                })}
-              </span>
-              <PayslipUpload onDone={() => void load()} />
-            </div>
-            <PayslipTable payslips={report.payslips} />
-            {data.meta.payslipFailures.length > 0 && (
-              <div className="notice notice--error">
-                <p>
-                  {t('section.payslips.failures', {
-                    count: data.meta.payslipFailures.length,
-                    files: data.meta.payslipFailures.map((failure) => failure.file).join(', '),
-                  })}
-                </p>
+                <section className="section">
+                  <div className="section__head">
+                    <h2>{t("section.fortnights.title")}</h2>
+                    <span className="section__note">
+                      {t("section.fortnights.note", { limit: report.limit })}
+                    </span>
+                  </div>
+                  <FortnightLadder
+                    fortnights={report.fortnights}
+                    limit={report.limit}
+                    today={TODAY}
+                    selectedStart={active?.start ?? null}
+                    onSelect={selectFromLadder}
+                  />
+                </section>
               </div>
-            )}
-          </section>
+            </div>
+          </TabPanel>
+
+          <TabPanel id="pagos" active={activeTab}>
+            <section className="section" ref={chequeRef}>
+              <div className="section__head">
+                <h2>{t("section.pay.title")}</h2>
+                <span className="section__note">
+                  {t("section.pay.note", { taxYear: report.pay.taxYear })}
+                  {pinnedPayWeek &&
+                    pinnedPayWeek !== report.pay.next?.weekStart && (
+                      <>
+                        {" · "}
+                        <button
+                          type="button"
+                          className="linkish"
+                          onClick={() => setPinnedPayWeek(null)}
+                        >
+                          {t("section.pay.back")}
+                        </button>
+                      </>
+                    )}
+                </span>
+              </div>
+              <PayCheque forecast={activeCheque} taxYear={report.pay.taxYear} />
+            </section>
+
+            <section className="section">
+              <div className="section__head">
+                <h2>{t("section.weeks.title")}</h2>
+                <span className="section__note">
+                  {t("section.weeks.note", {
+                    year: report.pay.yearToDate.financialYear,
+                    gross: money(report.pay.yearToDate.gross),
+                    tax: money(report.pay.yearToDate.tax),
+                    superannuation: money(report.pay.yearToDate.superannuation),
+                    count: report.pay.yearToDate.payslips,
+                  })}
+                </span>
+              </div>
+              <BackPayNote rollup={report.pay.backPay} />
+              <PayWeeks
+                weeks={payWeeks}
+                today={TODAY}
+                selectedStart={activeCheque?.weekStart ?? null}
+                onSelect={selectPayWeek}
+              />
+            </section>
+
+            <section className="section">
+              <div className="section__head">
+                <h2>{t("section.payslips.title")}</h2>
+                <span className="section__note">
+                  {t("section.payslips.note", {
+                    files: data.meta.payslipFiles,
+                    paid: report.totals.paidHours,
+                    roster: report.totals.rosterHours,
+                  })}
+                </span>
+                <PayslipUpload onDone={() => void load()} />
+              </div>
+              <PayslipTable payslips={report.payslips} />
+              {data.meta.payslipFailures.length > 0 && (
+                <div className="notice notice--error">
+                  <p>
+                    {t("section.payslips.failures", {
+                      count: data.meta.payslipFailures.length,
+                      files: data.meta.payslipFailures
+                        .map((failure) => failure.file)
+                        .join(", "),
+                    })}
+                  </p>
+                </div>
+              )}
+            </section>
+          </TabPanel>
+
+          <TabPanel id="revision" active={activeTab}>
+            <section className="section">
+              <div className="section__head">
+                <h2>{t("section.findings.title")}</h2>
+                <span className="section__note">
+                  {t("section.findings.note", {
+                    count: report.findings.length,
+                    shortfall: money(report.totals.payShortfall),
+                    km: money(report.totals.moneyOwed),
+                    recovered: money(report.totals.payRecovered),
+                    hasRecovered: report.totals.payRecovered > 0,
+                  })}
+                </span>
+              </div>
+              <FindingsList findings={report.findings} />
+            </section>
+          </TabPanel>
+
+          <TabPanel id="reportes" active={activeTab}>
+            <section className="section">
+              <ShiftReports />
+            </section>
+          </TabPanel>
         </>
       )}
     </div>
