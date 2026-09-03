@@ -41,6 +41,21 @@ interface PdfPageProxy {
 
 let cachedModule: PdfJsModule | null = null;
 
+/** En Node pdfjs no levanta un worker real: monta un "fake worker" importando
+ *  `./pdf.worker.mjs` con un especificador que arma en runtime. Ese import no
+ *  se puede rastrear estaticamente, asi que el bundler de Vercel no copia el
+ *  archivo a la lambda y el arranque falla con "Cannot find module
+ *  /var/task/node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs".
+ *
+ *  Cargandolo nosotros con un especificador literal el bundler si lo incluye, y
+ *  dejandolo en `globalThis.pdfjsWorker` pdfjs lo usa directamente sin volver a
+ *  resolver la ruta. */
+async function primeFakeWorker(): Promise<void> {
+  const globals = globalThis as { pdfjsWorker?: unknown };
+  if (globals.pdfjsWorker) return;
+  globals.pdfjsWorker = await import('pdfjs-dist/legacy/build/pdf.worker.mjs');
+}
+
 async function loadPdfJs(): Promise<PdfJsModule> {
   if (cachedModule) return cachedModule;
   // El build legacy es el que funciona en Node sin canvas ni worker, y se
@@ -53,6 +68,7 @@ async function loadPdfJs(): Promise<PdfJsModule> {
   if (!resolved?.getDocument) {
     throw new Error('No se pudo cargar pdfjs-dist: falta getDocument en el modulo.');
   }
+  await primeFakeWorker();
   cachedModule = resolved;
   return cachedModule;
 }
